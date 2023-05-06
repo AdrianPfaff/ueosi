@@ -25,7 +25,8 @@ public class OSI : ModuleRules
 			var Includes=Path.Combine(ModuleDirectory, "Includes");
 			PublicIncludePaths.Add(Includes);
 
-			RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "Libraries",
+			
+			RuntimeDependencies.Add(Path.Combine(PluginDirectory, "Binaries", "Win64",
 				"libprotobuf.dll"));
 
 			//workaround for cryptic error
