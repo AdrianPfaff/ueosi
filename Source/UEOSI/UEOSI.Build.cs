@@ -1,5 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
+using EpicGames.Core;
 using UnrealBuildTool;
 
 public class UEOSI : ModuleRules
@@ -13,7 +14,6 @@ public class UEOSI : ModuleRules
 				// ... add public include paths required here ...
 			}
 			);
-				
 		
 		PrivateIncludePaths.AddRange(
 			new string[] {
@@ -26,8 +26,7 @@ public class UEOSI : ModuleRules
 			new string[]
 			{
 				"Core",
-				"UEOSILibrary",
-				"Projects"
+				"Projects",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -36,6 +35,7 @@ public class UEOSI : ModuleRules
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
+				"OSI"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
@@ -47,5 +47,7 @@ public class UEOSI : ModuleRules
 				// ... add any modules that your module loads dynamically here ...
 			}
 			);
+
 	}
+	
 }

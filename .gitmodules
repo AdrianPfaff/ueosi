@@ -1,0 +1,3 @@
+[submodule "Source/ThirdParty/OSI/lib/open-simulation-interface"]
+	path = Source/ThirdParty/OSI/lib/open-simulation-interface
+	url = https://github.com/OpenSimulationInterface/open-simulation-interface.git
