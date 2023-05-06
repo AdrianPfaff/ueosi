@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "UEOSI",
+	"Description": "Allows recording OSI traces from Unreal",
+	"Category": "Other",
+	"CreatedBy": "Adrian Pfaff",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "UEOSI",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
