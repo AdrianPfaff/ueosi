@@ -27,6 +27,8 @@ public class UEOSI : ModuleRules
 			{
 				"Core",
 				"Projects",
+				"CoreUObject",
+				"Engine"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
