@@ -7,6 +7,8 @@
 #include "OsiParticipantComponent.generated.h"
 
 
+class UObjectDeclaration;
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class UEOSI_API UOsiParticipantComponent : public UActorComponent
 {
@@ -21,5 +23,9 @@ public:
 protected:
 	
 	virtual void BeginPlay() override;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Instanced)
+	UObjectDeclaration* ParticipantDeclaration;
 		
 };

@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(EditInlineNew)
+UCLASS(EditInlineNew, BlueprintType, Abstract)
 class UEOSI_API UDeclaration : public UObject
 {
 	GENERATED_BODY()

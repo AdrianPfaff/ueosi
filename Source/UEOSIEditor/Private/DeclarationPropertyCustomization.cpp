@@ -7,12 +7,13 @@ void FDeclarationPropertyCustomization::CustomizeHeader(TSharedRef<IPropertyHand
                                                         FDetailWidgetRow& HeaderRow, IPropertyTypeCustomizationUtils& StructCustomizationUtils)
 {
 	HeaderRow.NameContent()[StructPropertyHandle->CreatePropertyNameWidget()];
+	HeaderRow.ValueContent()[StructPropertyHandle->CreatePropertyValueWidget()];
 }
 
 void FDeclarationPropertyCustomization::CustomizeChildren(TSharedRef<IPropertyHandle> StructPropertyHandle,
 	IDetailChildrenBuilder& StructBuilder, IPropertyTypeCustomizationUtils& StructCustomizationUtils)
 {
-
+	
 	//the StructPropertyHandle is not the actual Declaration, but the field containing the declaration
 	//since this is a simple field (not a container or struct type), we can just access the Declaration by getting the
 	//first child
