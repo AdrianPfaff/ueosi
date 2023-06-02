@@ -37,3 +37,13 @@ inline osi3::TrafficSign_SupplementarySign_Classification_Type operator=(ESupple
 {
 	return static_cast<osi3::TrafficSign_SupplementarySign_Classification_Type>(Var);
 }
+
+inline osi3::TrafficSign_SupplementarySign_Classification_Actor operator=(ESignActor Var) noexcept
+{
+	return static_cast<osi3::TrafficSign_SupplementarySign_Classification_Actor>(Var);
+}
+
+inline osi3::TrafficSign_SupplementarySign_Classification_Arrow_Direction operator=(EArrowDirection Var) noexcept
+{
+	return static_cast<osi3::TrafficSign_SupplementarySign_Classification_Arrow_Direction>(Var);
+}

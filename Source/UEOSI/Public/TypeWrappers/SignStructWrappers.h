@@ -29,12 +29,15 @@ USTRUCT(BlueprintType)
 struct FTrafficSignValue {
 	GENERATED_BODY()
 
+	//Additional value associated with a traffic sign or road marking, e.g. value of a speed limit.
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	double Value;
 
+	//Unit for additional value. 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	ETrafficSignUnit Unit;
-	
+
+	//Text associated with a sign, e.g. the name of a location whose distance to the sign is indicated therein. The interpretation of this text is left to a user-defined procedure.
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString Text;
 };
@@ -61,7 +64,7 @@ struct FMainTrafficSignClassification
 	ESignDirectionScope DirectionScope;
 
 	//The IDs of the lanes that the sign is assigned to. May be multiple if the sign is valid for multiple lanes.
-	// TArray<FIdentifier> AssignedLaneID;
+	// TArray<FIdentifier> AssignedLaneIDs;
 
 	//Some traffic signs exist in two variants that have a similar semantic meaning but differ in that the symbol of the one corresponds to the specular reflection of the other with respect to the vertical axis. For some scenarios it might be relevant to choose the reflected version of a reference sign. This can be done by setting the vertically_mirrored boolean to true. As for every boolean in the protocol buffers language, the default value of vertically_mirrored is false.
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -69,7 +72,7 @@ struct FMainTrafficSignClassification
 
 	//Boolean flag to indicate that a traffic sign is taken out of service. This can be achieved by visibly crossing the sign or covering it completely.
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	bool IsOutOfService;
+	bool bIsOutOfService;
 
 	//Country specification of the traffic sign catalog specification that identifies the actual traffic sign. This is part of the 4-tupel traffic sign catalog specification as used in OpenDRIVE. Country is specified using the ISO 3166-1, alpha-2 code https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2, or the special OpenDRIVE country for generic signs.
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -95,11 +98,52 @@ USTRUCT(BlueprintType)
 struct FSupplementaryTrafficSignClassification
 {
 	GENERATED_BODY()
-	
+
+	//Variability. 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	ETrafficSignVariability Variability;
+
+	//Type of the supplementary sign. 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	ESupplementarySignType Type;
 
-	//TODO
+	//Additional value(s) associated with the traffic sign, e.g. length, mass or starting time in time range.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FTrafficSignValue Value;
+
+	//The IDs of the lanes that the sign is assigned to. May be multiple if the sign is valid for multiple lanes.
+	//TArray<FIdentifier> AssignedLaneIDs;
+
+	//Definition of the traffic actors the supplementary sign makes reference to. E.g. bikes, trucks, cars, etc.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TArray<ESignActor> Actors;
+
+	//A direction arrow shown on the supplementary sign. 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TArray<EArrowDirection> Arrows;
+
+	//Boolean flag to indicate that the supplementary traffic sign is taken out of service. This can be achieved by visibly crossing the sign or covering it completely.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	bool bIsOutOfService;
+
+	//Country specification of the traffic sign catalog specification that identifies the actual traffic sign. This is part of the 4-tupel traffic sign catalog specification as used in OpenDRIVE. Country is specified using the ISO 3166-1, alpha-2 code https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2, or the special OpenDRIVE country for generic signs.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString CountryCode;
+
+	//Revision specification of the traffic sign catalog specification that identifies the actual traffic sign. This is part of the 4-tupel traffic sign catalog specification as used in OpenDRIVE. The year the traffic rules came into force. e.g. "2017"
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString CountryRevision;
+
+	//Code specification of the traffic sign catalog specification that identifies the actual traffic sign. This is part of the 4-tupel traffic sign catalog specification as used in OpenDRIVE. Code identifier according to country and country revision, corresponds to the type field of OpenDRIVE. code is only unique in combination with country and country_revision. e.g. http://www.vzkat.de/2017/VzKat.htm
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Code;
+
+	//Sub-code specification of the traffic sign catalog specification that identifies the actual traffic sign. This is part of the 4-tupel traffic sign catalog specification as used in OpenDRIVE. Sub-code identifier according to country, country revision and code, corresponds to the subtype field of OpenDRIVE. sub_code is only unique in combination with country, country_revision, and code. e.g. http://www.vzkat.de/2017/VzKat.htm
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString SubCode;
+
+	//Assignment of this object to logical lanes.
+	//TArray<FLogicalLaneAssignment> LogicalLaneAssignments;
 };
 
 USTRUCT(BlueprintType)
