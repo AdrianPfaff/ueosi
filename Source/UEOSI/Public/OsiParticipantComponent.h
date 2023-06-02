@@ -26,6 +26,6 @@ protected:
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Instanced)
-	UObjectDeclaration* ParticipantDeclaration;
+	TArray<UObjectDeclaration*> ParticipantDeclaration;
 		
 };
