@@ -23,8 +23,7 @@ bool UOsiWorldSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 
 void UOsiWorldSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
-	OsiQueue=MakeShared<FOsiQueue>();
-	OsiThread=MakeShared<FOsiRunnable>(OsiQueue);
+	OsiThread=MakeShared<FOsiRunnable>();
 }
 
 void UOsiWorldSubsystem::Deinitialize()

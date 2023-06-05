@@ -3,11 +3,13 @@
 
 #include "OsiThread/OsiThread.h"
 #include "OsiThread/OsiThreadLog.h"
+#include "OsiWorldSubsystem.h"
 
-FOsiRunnable::FOsiRunnable(TSharedPtr<FOsiQueue> Queue)
+
+
+FOsiRunnable::FOsiRunnable()
 {
 	InternalThread=FRunnableThread::Create(this, TEXT("Osi Processor Thread"));
-	CommandQueue=Queue;
 }
 
 FOsiRunnable::~FOsiRunnable()
@@ -26,7 +28,25 @@ uint32 FOsiRunnable::Run()
 {
 	while(!bShouldExit)
 	{
-		
+		Timestamp=FDateTime::Now();
+		NextDispatch=Timestamp+DispatchInterval;
+		while (!CommandQueue.IsEmpty())
+		{
+			TFunction<void()> Functor;
+			CommandQueue.Dequeue(Functor);
+			Functor();
+			
+		}
+
+		//dispatch trace frame
+
+		while (CurrentTime<NextDispatch)
+		{
+			CurrentTime=FDateTime::Now();
+		}
+
+		CatchStall();
+			
 	}
 	return true;
 }

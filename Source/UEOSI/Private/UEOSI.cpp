@@ -8,10 +8,6 @@
 
 void FUEOSIModule::StartupModule()
 {
-	
-	// Call the test function in the third party library that opens a message box
-	osi3::SensorView view;
-	auto camview=view.add_camera_sensor_view();
 
 }
 

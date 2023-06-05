@@ -3,13 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "google/protobuf/arena.h"
+#include "OsiThread/OsiThread.h"
 #include "Subsystems/WorldSubsystem.h"
 #include "OsiWorldSubsystem.generated.h"
 
+
+
 struct FOsiThreadContext;
 class FOsiRunnable;
-
-using FOsiQueue=TQueue<TFunction<void()>>;
 /**
  * 
  */
@@ -27,13 +29,23 @@ public:
 
 	virtual void Deinitialize() override;
 
-	inline void EnqueueCommand(const TFunction<void()>& Command) const { OsiQueue->Enqueue(Command); }
+	inline void EnqueueCommand(TFunction<void()>& Command) { OsiThread->EnqueueCommand(Command); }
 
+	template<class T>
+	T* AllocateMessage()
+	{
+		return google::protobuf::Arena::CreateMessage<T>(Arena);
+	}
 
 private:
 
 	TSharedPtr<FOsiRunnable> OsiThread;
-
 	
-	TSharedPtr<FOsiQueue> OsiQueue;
+	FOsiQueue CommandQueue;
+
+	//allocator for messages
+	google::protobuf::Arena Arena;
+
+	friend class FOsiRunnable;
+
 };

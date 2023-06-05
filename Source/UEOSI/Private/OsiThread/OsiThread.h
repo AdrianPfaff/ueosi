@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "OsiThread/OsiWorldSubsystem.h"
+#include "OsiThreadLog.h"
+
+using FOsiQueue=TQueue<TFunction<void()>>;
 
 /**
  * 
@@ -12,8 +14,7 @@ class FOsiRunnable : public FRunnable
 {
 
 public:
-
- FOsiRunnable(TSharedPtr<FOsiQueue> Queue);
+ FOsiRunnable();
  virtual ~FOsiRunnable() override;
  
  virtual bool Init() override;
@@ -24,11 +25,29 @@ public:
 
  virtual void Exit() override;
 
+ inline void EnqueueCommand(TFunction<void()>& Cmd) { CommandQueue.Enqueue(Cmd); }
+
 private:
+
+ inline void CatchStall() const
+ {
+  if(Timestamp>NextDispatch){
+   UE_LOG(LogOsiThread, Error, TEXT("Osi Thread stalled! Dispatch "));
+  }
+ }
+
+ bool bActorsCurrentlyTicking=false;
 
  FRunnableThread* InternalThread;
 
- TSharedPtr<FOsiQueue> CommandQueue;
-
  bool bShouldExit=false;
+
+ FOsiQueue CommandQueue;
+
+ FDateTime Timestamp=0;
+ FDateTime NextDispatch=0;
+ FDateTime CurrentTime=0;
+
+ FTimespan DispatchInterval=FTimespan::FromMilliseconds(16.6);
+ 
 };
