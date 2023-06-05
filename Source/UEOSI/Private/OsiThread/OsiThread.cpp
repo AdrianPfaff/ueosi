@@ -28,8 +28,7 @@ uint32 FOsiRunnable::Run()
 {
 	while(!bShouldExit)
 	{
-		Timestamp=FDateTime::Now();
-		NextDispatch=Timestamp+DispatchInterval;
+		NextDispatch=FDateTime::Now()+DispatchInterval;
 		while (!CommandQueue.IsEmpty())
 		{
 			TFunction<void()> Functor;
@@ -40,12 +39,15 @@ uint32 FOsiRunnable::Run()
 
 		//dispatch trace frame
 
-		while (CurrentTime<NextDispatch)
+		CatchStall();
+		
+		while (FDateTime::Now()<NextDispatch)
 		{
-			CurrentTime=FDateTime::Now();
+			//putting to sleep is no option, wake in time is not guaranteed
+			//could maybe sleep here and wake from game thread again
 		}
 
-		CatchStall();
+		
 			
 	}
 	return true;

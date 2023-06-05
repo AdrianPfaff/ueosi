@@ -31,8 +31,8 @@ private:
 
  inline void CatchStall() const
  {
-  if(Timestamp>NextDispatch){
-   UE_LOG(LogOsiThread, Error, TEXT("Osi Thread stalled! Dispatch "));
+  if(FDateTime::Now()>NextDispatch){
+   UE_LOG(LogOsiThread, Error, TEXT("Osi Thread stalled! Dispatch took longer than the interval (%fms)"), DispatchInterval.GetTotalMilliseconds());
   }
  }
 
@@ -43,10 +43,7 @@ private:
  bool bShouldExit=false;
 
  FOsiQueue CommandQueue;
-
- FDateTime Timestamp=0;
  FDateTime NextDispatch=0;
- FDateTime CurrentTime=0;
 
  FTimespan DispatchInterval=FTimespan::FromMilliseconds(16.6);
  

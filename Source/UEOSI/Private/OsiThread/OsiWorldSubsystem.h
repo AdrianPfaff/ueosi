@@ -29,7 +29,7 @@ public:
 
 	virtual void Deinitialize() override;
 
-	inline void EnqueueCommand(TFunction<void()>& Command) { OsiThread->EnqueueCommand(Command); }
+	inline void EnqueueCommand(TFunction<void()>& Command) const { OsiThread->EnqueueCommand(Command); }
 
 	template<class T>
 	T* AllocateMessage()
