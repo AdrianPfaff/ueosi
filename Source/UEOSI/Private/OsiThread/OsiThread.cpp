@@ -3,7 +3,6 @@
 
 #include "OsiThread/OsiThread.h"
 #include "OsiThread/OsiThreadLog.h"
-#include "OsiWorldSubsystem.h"
 
 
 
@@ -46,8 +45,6 @@ uint32 FOsiRunnable::Run()
 			//putting to sleep is no option, wake in time is not guaranteed
 			//could maybe sleep here and wake from game thread again
 		}
-
-		
 			
 	}
 	return true;

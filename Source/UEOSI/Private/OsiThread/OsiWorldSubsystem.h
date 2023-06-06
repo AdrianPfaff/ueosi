@@ -40,12 +40,8 @@ public:
 private:
 
 	TSharedPtr<FOsiRunnable> OsiThread;
-	
-	FOsiQueue CommandQueue;
 
 	//allocator for messages
 	google::protobuf::Arena Arena;
-
-	friend class FOsiRunnable;
 
 };

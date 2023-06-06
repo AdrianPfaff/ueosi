@@ -17,7 +17,7 @@ bool UOsiWorldSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 	{
 		return true;
 	}
-
+	
 	return false;
 }
 
