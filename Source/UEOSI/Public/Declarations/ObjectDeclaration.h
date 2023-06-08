@@ -13,5 +13,9 @@ UCLASS(Abstract)
 class UEOSI_API UObjectDeclaration : public UDeclaration
 {
 	GENERATED_BODY()
-	
+
+public:
+	virtual void Initialize() {}
+
+protected:
 };

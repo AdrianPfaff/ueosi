@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "google/protobuf/arena.h"
 #include "OsiThread/OsiThread.h"
 #include "Subsystems/WorldSubsystem.h"
 #include "OsiWorldSubsystem.generated.h"
@@ -31,17 +30,10 @@ public:
 
 	inline void EnqueueCommand(TFunction<void()>& Command) const { OsiThread->EnqueueCommand(Command); }
 
-	template<class T>
-	T* AllocateMessage()
-	{
-		return google::protobuf::Arena::CreateMessage<T>(Arena);
-	}
+	osi3::GroundTruth* GetGlobalGroundTruth() const { return OsiThread->GetGlobalGroundTruth(); }
 
 private:
 
 	TSharedPtr<FOsiRunnable> OsiThread;
-
-	//allocator for messages
-	google::protobuf::Arena Arena;
 
 };

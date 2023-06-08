@@ -2,6 +2,8 @@
 
 
 #include "OsiThread/OsiThread.h"
+
+#include "osi_groundtruth.pb.h"
 #include "OsiThread/OsiThreadLog.h"
 
 
@@ -20,6 +22,9 @@ FOsiRunnable::~FOsiRunnable()
 bool FOsiRunnable::Init()
 {
 	UE_LOG(LogOsiThread, Display, TEXT("Initializing OSI Thread"))
+
+	GroundTruth=AllocateMessage<osi3::GroundTruth>();
+	
 	return true;
 }
 

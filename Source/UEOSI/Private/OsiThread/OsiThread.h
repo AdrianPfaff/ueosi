@@ -4,6 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "OsiThreadLog.h"
+#include "google/protobuf/arena.h"
+
+namespace osi3
+{
+ class GroundTruth;
+}
 
 using FOsiQueue=TQueue<TFunction<void()>>;
 
@@ -26,6 +32,14 @@ public:
  virtual void Exit() override;
 
  inline void EnqueueCommand(TFunction<void()>& Cmd) { CommandQueue.Enqueue(Cmd); }
+ 
+ template<class T>
+ T* AllocateMessage()
+ {
+  return google::protobuf::Arena::CreateMessage<T>(&Arena);
+ }
+
+ osi3::GroundTruth* GetGlobalGroundTruth() const { return GroundTruth; }
 
 private:
 
@@ -35,6 +49,8 @@ private:
    UE_LOG(LogOsiThread, Error, TEXT("Osi Thread stalled! Dispatch took longer than the interval (%fms)"), DispatchInterval.GetTotalMilliseconds());
   }
  }
+
+ osi3::GroundTruth* GroundTruth;
 
  bool bActorsCurrentlyTicking=false;
 
@@ -46,5 +62,8 @@ private:
  FDateTime NextDispatch=0;
 
  FTimespan DispatchInterval=FTimespan::FromMilliseconds(16.6);
+
+ //allocator for messages
+ google::protobuf::Arena Arena;
  
 };
