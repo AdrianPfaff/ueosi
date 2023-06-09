@@ -65,16 +65,11 @@ uint32 FOsiRunnable::Run()
 			auto File=OpenFile(TEXT("OutputTrace.osi"));
 			uint32 IndexToSave=FrameBuffer.GetPreviousIndex(CurrentBufferIndex);
 			uint32 SavedIndices=0;
-			auto MemSize=FrameBuffer[IndexToSave].GroundTruth->ByteSizeLong();
-			auto Mem=FMemory::Malloc(MemSize);
+			void* Mem=nullptr;
 			while(SavedIndices!=FramesToSave)
 			{
-				auto NewMemSize=FrameBuffer[IndexToSave].GroundTruth->ByteSizeLong();
-				if(MemSize < NewMemSize)
-				{
-					MemSize=NewMemSize;
-					Mem=FMemory::Realloc(Mem, NewMemSize);
-				}
+				auto MemSize=FrameBuffer[IndexToSave].GroundTruth->ByteSizeLong();
+				Mem=FMemory::Realloc(Mem, MemSize);
 				
 				FrameBuffer[CurrentBufferIndex].GroundTruth->SerializeToArray(Mem, MemSize);
 				File->Write(static_cast<uint8*>(Mem), MemSize);
