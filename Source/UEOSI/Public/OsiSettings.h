@@ -22,5 +22,5 @@ public:
 
 	//how many frames should be saved in the buffer. defaults to one minute (default interval is equal to 60 frames per second, 60*60=1min) will be rounded to nearest power of 2
 	UPROPERTY(EditAnywhere)
-	uint64 TraceFrameBufferSize=60*60;
+	uint32 TraceFrameBufferSize=60*60;
 };

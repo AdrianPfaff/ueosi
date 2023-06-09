@@ -38,15 +38,21 @@ public:
 
 	virtual void Exit() override;
 
+	//thread safe
 	inline void EnqueueCommand(TFunction<void()>& Cmd) { CommandQueue.Enqueue(Cmd); }
- 
+
+	//thread safe
 	template<class T>
 	T* AllocateMessage()
 	{
 		return google::protobuf::Arena::CreateMessage<T>(&Arena);
 	}
 
+	//NOT thread safe to read/write data in any form! only manipulate using commands. exception: allocating new sub-messages
 	osi3::GroundTruth* GetGlobalGroundTruth() const { return GroundTruth; }
+
+	//TODO: NOT Thread safe if another saving operation has been queued!
+	void SaveBuffer(uint32 AmountOfFrames);
 
 private:
 
@@ -59,11 +65,11 @@ private:
 
 	osi3::GroundTruth* GroundTruth;
 
-	bool bActorsCurrentlyTicking=false;
-
 	FRunnableThread* InternalThread;
 
 	bool bShouldExit=false;
+
+	bool bShouldSaveToDisk=false;
 
 	FOsiQueue CommandQueue;
 	FDateTime NextDispatch=0;
@@ -76,6 +82,12 @@ private:
 	//prealloc tiniest buffer, will be replaced anyways
 	TCircularBuffer<FOsiFrame> FrameBuffer=TCircularBuffer<FOsiFrame>(0);
 
-	uint64 CurrentBufferIndex=0;
+	uint32 BufferSize;
+
+	uint32 CurrentBufferIndex=0;
+
+	uint32 FramesToSave=0;
+
+	TSharedPtr<IFileHandle> OpenFile(const TCHAR* Filename);
  
 };
