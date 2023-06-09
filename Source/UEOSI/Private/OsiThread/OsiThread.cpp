@@ -3,6 +3,7 @@
 
 #include "OsiThread/OsiThread.h"
 
+#include "OsiSettings.h"
 #include "osi_groundtruth.pb.h"
 #include "OsiThread/OsiThreadLog.h"
 
@@ -23,7 +24,18 @@ bool FOsiRunnable::Init()
 {
 	UE_LOG(LogOsiThread, Display, TEXT("Initializing OSI Thread"))
 
+	auto OsiSettings=GetDefault<UOsiSettings>();
+	DispatchInterval=FTimespan::FromMilliseconds(OsiSettings->OsiIntervalMS);
+	FrameBuffer=TCircularBuffer<FOsiFrame>(OsiSettings->TraceFrameBufferSize);
+
 	GroundTruth=AllocateMessage<osi3::GroundTruth>();
+
+	//allocate messages
+	do
+	{
+		FrameBuffer[CurrentBufferIndex].GroundTruth=AllocateMessage<osi3::GroundTruth>();
+		CurrentBufferIndex=FrameBuffer.GetNextIndex(CurrentBufferIndex);
+	} while(CurrentBufferIndex!=0);
 	
 	return true;
 }
@@ -42,6 +54,10 @@ uint32 FOsiRunnable::Run()
 		}
 
 		//dispatch trace frame
+		FrameBuffer[CurrentBufferIndex].GroundTruth->CopyFrom(*GroundTruth);
+
+		//update index
+		CurrentBufferIndex=FrameBuffer.GetNextIndex(CurrentBufferIndex);
 
 		CatchStall();
 		

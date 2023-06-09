@@ -8,10 +8,17 @@
 
 namespace osi3
 {
- class GroundTruth;
+	class GroundTruth;
 }
 
 using FOsiQueue=TQueue<TFunction<void()>>;
+
+struct FOsiFrame
+{
+	FOsiFrame()=default;
+	
+	osi3::GroundTruth* GroundTruth=nullptr;
+};
 
 /**
  * 
@@ -20,50 +27,55 @@ class FOsiRunnable : public FRunnable
 {
 
 public:
- FOsiRunnable();
- virtual ~FOsiRunnable() override;
+	FOsiRunnable();
+	virtual ~FOsiRunnable() override;
  
- virtual bool Init() override;
+	virtual bool Init() override;
 
- virtual uint32 Run() override;
+	virtual uint32 Run() override;
 
- virtual void Stop() override;
+	virtual void Stop() override;
 
- virtual void Exit() override;
+	virtual void Exit() override;
 
- inline void EnqueueCommand(TFunction<void()>& Cmd) { CommandQueue.Enqueue(Cmd); }
+	inline void EnqueueCommand(TFunction<void()>& Cmd) { CommandQueue.Enqueue(Cmd); }
  
- template<class T>
- T* AllocateMessage()
- {
-  return google::protobuf::Arena::CreateMessage<T>(&Arena);
- }
+	template<class T>
+	T* AllocateMessage()
+	{
+		return google::protobuf::Arena::CreateMessage<T>(&Arena);
+	}
 
- osi3::GroundTruth* GetGlobalGroundTruth() const { return GroundTruth; }
+	osi3::GroundTruth* GetGlobalGroundTruth() const { return GroundTruth; }
 
 private:
 
- inline void CatchStall() const
- {
-  if(FDateTime::Now()>NextDispatch){
-   UE_LOG(LogOsiThread, Error, TEXT("Osi Thread stalled! Dispatch took longer than the interval (%fms)"), DispatchInterval.GetTotalMilliseconds());
-  }
- }
+	inline void CatchStall() const
+	{
+		if(FDateTime::Now()>NextDispatch){
+			UE_LOG(LogOsiThread, Error, TEXT("Osi Thread stalled! Dispatch took longer than the interval (%fms)"), DispatchInterval.GetTotalMilliseconds());
+		}
+	}
 
- osi3::GroundTruth* GroundTruth;
+	osi3::GroundTruth* GroundTruth;
 
- bool bActorsCurrentlyTicking=false;
+	bool bActorsCurrentlyTicking=false;
 
- FRunnableThread* InternalThread;
+	FRunnableThread* InternalThread;
 
- bool bShouldExit=false;
+	bool bShouldExit=false;
 
- FOsiQueue CommandQueue;
- FDateTime NextDispatch=0;
+	FOsiQueue CommandQueue;
+	FDateTime NextDispatch=0;
 
- FTimespan DispatchInterval=FTimespan::FromMilliseconds(16.6);
+	FTimespan DispatchInterval;
 
- //allocator for messages
- google::protobuf::Arena Arena;
+	//allocator for messages
+	google::protobuf::Arena Arena;
+
+	//prealloc tiniest buffer, will be replaced anyways
+	TCircularBuffer<FOsiFrame> FrameBuffer=TCircularBuffer<FOsiFrame>(0);
+
+	uint64 CurrentBufferIndex=0;
  
 };
