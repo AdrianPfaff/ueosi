@@ -45,7 +45,10 @@ uint32 FOsiRunnable::Run()
 {
 	while(!bShouldExit)
 	{
+		//calculate when next dispatch should happen
 		NextDispatch=FDateTime::Now()+DispatchInterval;
+
+		//process all commands
 		while (!CommandQueue.IsEmpty())
 		{
 			TFunction<void()> Functor;
@@ -54,21 +57,29 @@ uint32 FOsiRunnable::Run()
 			
 		}
 
-		//dispatch trace frame
+		//buffer last trace frame
 		FrameBuffer[CurrentBufferIndex].GroundTruth->CopyFrom(*GroundTruth);
 
 		//update index
 		CurrentBufferIndex=FrameBuffer.GetNextIndex(CurrentBufferIndex);
 
+		//save to disk
 		if(bShouldSaveToDisk)
 		{
+			//open file TODO: allow custom naming, check later for required osi format
 			auto File=OpenFile(TEXT("OutputTrace.osi"));
+			//save backwards. due to timestamps order does not matter
 			uint32 IndexToSave=FrameBuffer.GetPreviousIndex(CurrentBufferIndex);
 			uint32 SavedIndices=0;
+			
+			//will be allocated in loop
 			void* Mem=nullptr;
 			while(SavedIndices!=FramesToSave)
 			{
+				//check size. this might change(repeated fields), so better check for each trace frame
 				auto MemSize=FrameBuffer[IndexToSave].GroundTruth->ByteSizeLong();
+
+				//make sure enough memory is allocated
 				Mem=FMemory::Realloc(Mem, MemSize);
 				
 				FrameBuffer[CurrentBufferIndex].GroundTruth->SerializeToArray(Mem, MemSize);
@@ -81,7 +92,8 @@ uint32 FOsiRunnable::Run()
 		}
 
 		CatchStall();
-		
+
+		//wait until next osi frame should be calculated
 		while (FDateTime::Now()<NextDispatch)
 		{
 			//putting to sleep is no option, wake in time is not guaranteed

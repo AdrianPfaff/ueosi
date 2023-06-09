@@ -33,6 +33,6 @@ protected:
 
 	osi3::BaseStationary* InternalBaseStationary;
 
-	UPROPERTY(EditAnywhere, Instanced, Category="DECL")
+	UPROPERTY(EditAnywhere, Category="DECL")
 	UPositionDeclaration* PositionDeclaration;
 };

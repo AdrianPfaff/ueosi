@@ -37,7 +37,7 @@ protected:
 	//The ID of the traffic sign.
 	//FIdentifier Identifier;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Instanced, Category="DECL")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="DECL")
 	UBaseStationary* MainSignBaseStationary;
 	
 	//Additional supplementary signs, e.g. time limits, modifying the traffic sign.

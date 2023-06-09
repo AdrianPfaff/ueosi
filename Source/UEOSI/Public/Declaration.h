@@ -10,7 +10,7 @@ class UOsiWorldSubsystem;
 /**
  * 
  */
-UCLASS(EditInlineNew, BlueprintType, Abstract)
+UCLASS(EditInlineNew, BlueprintType, Abstract, DefaultToInstanced)
 class UEOSI_API UDeclaration : public UObject
 {
 	GENERATED_BODY()

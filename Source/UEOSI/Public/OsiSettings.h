@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(DefaultConfig, Config="Game")
 class UEOSI_API UOsiSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
