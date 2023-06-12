@@ -5,6 +5,7 @@
 
 #include "osi_common.pb.h"
 #include "Declarations/Common/PositionDeclaration.h"
+#include "Declarations/Common/RotationDeclaration.h"
 
 void UBaseStationary::Initialize(osi3::BaseStationary* OsiResource)
 {
@@ -12,14 +13,19 @@ void UBaseStationary::Initialize(osi3::BaseStationary* OsiResource)
 
 	PositionDeclaration->InternalInit(GetWorld(), OsiSubsystem);
 	PositionDeclaration->Initialize(InternalBaseStationary->mutable_position());
+
+	RotationDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	RotationDeclaration->Initialize(InternalBaseStationary->mutable_orientation());
 }
 
 void UBaseStationary::InitialDispatch()
 {
 	PositionDeclaration->InitialDispatch();
+	RotationDeclaration->InitialDispatch();
 }
 
 void UBaseStationary::Update()
 {
 	PositionDeclaration->Update();
+	RotationDeclaration->Update();
 }

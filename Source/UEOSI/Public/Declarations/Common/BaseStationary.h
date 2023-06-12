@@ -6,12 +6,14 @@
 #include "Declaration.h"
 #include "BaseStationary.generated.h"
 
+class URotationDeclaration;
+class UPositionDeclaration;
+
 namespace osi3
 {
 	class BaseStationary;
 }
 
-class UPositionDeclaration;
 /**
  * 
  */
@@ -30,9 +32,12 @@ public:
 
 
 protected:
-
+	
 	osi3::BaseStationary* InternalBaseStationary;
 
 	UPROPERTY(EditAnywhere, Category="DECL")
 	UPositionDeclaration* PositionDeclaration;
+
+	UPROPERTY(EditAnywhere, Category="DECL")
+	URotationDeclaration* RotationDeclaration;
 };

@@ -4,7 +4,7 @@
 #include "Declarations/Common/PositionComponent.h"
 
 #include "osi_common.pb.h"
-#include "VectorConversion.h"
+#include "MathConversion.h"
 
 void UPositionComponent::InitialDispatch()
 {
