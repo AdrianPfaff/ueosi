@@ -6,6 +6,7 @@
 #include "Declaration.h"
 #include "BaseStationary.generated.h"
 
+class UBoundingBoxDeclaration;
 class URotationDeclaration;
 class UPositionDeclaration;
 
@@ -34,6 +35,9 @@ public:
 protected:
 	
 	osi3::BaseStationary* InternalBaseStationary;
+
+	UPROPERTY(EditAnywhere, Category="DECL")
+	UBoundingBoxDeclaration* BoundingBoxDeclaration;
 
 	UPROPERTY(EditAnywhere, Category="DECL")
 	UPositionDeclaration* PositionDeclaration;
