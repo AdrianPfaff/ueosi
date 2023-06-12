@@ -44,4 +44,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category="DECL")
 	URotationDeclaration* RotationDeclaration;
+
+	//TODO: BasePolygon
 };
