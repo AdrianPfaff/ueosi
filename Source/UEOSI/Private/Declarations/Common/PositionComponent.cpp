@@ -3,9 +3,6 @@
 
 #include "Declarations/Common/PositionComponent.h"
 
-#include "osi_common.pb.h"
-#include "MathConversion.h"
-
 void UPositionComponent::InitialDispatch()
 {
 	auto Owner=GetTypedOuter<AActor>();
@@ -25,16 +22,4 @@ void UPositionComponent::Update()
 		LastPosition=Component->GetComponentLocation();
 		DispatchPosition(LastPosition);
 	}
-}
-
-void UPositionComponent::DispatchPosition(FVector Position)
-{
-	DispatchCommand([InternalPosition=InternalPosition, Position] () mutable
-	{
-		VecLHStoRHS(Position);
-		InternalPosition->set_x(Position.X);
-		InternalPosition->set_y(Position.Y);
-		InternalPosition->set_z(Position.Z);
-	}
-	);
 }

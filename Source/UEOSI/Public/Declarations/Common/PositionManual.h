@@ -29,7 +29,5 @@ protected:
 	FVector Position;
 
 	bool bPositionHasChanged=false;
-
-	void DispatchPosition();
 	
 };

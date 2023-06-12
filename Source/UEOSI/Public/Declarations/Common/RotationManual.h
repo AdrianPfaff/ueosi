@@ -30,6 +30,6 @@ protected:
 
 	bool bRotationHasChanged=false;
 
-	void DispatchRotation();
+	
 	
 };

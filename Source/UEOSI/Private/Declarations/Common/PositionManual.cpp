@@ -8,7 +8,7 @@
 
 void UPositionManual::InitialDispatch()
 {
-	DispatchPosition();
+	DispatchPosition(Position);
 }
 
 void UPositionManual::Update()
@@ -17,17 +17,5 @@ void UPositionManual::Update()
 	{
 		return;
 	}
-	DispatchPosition();
-}
-
-void UPositionManual::DispatchPosition()
-{
-	DispatchCommand([InternalPosition=InternalPosition, Position=Position] () mutable
-	{
-		VecLHStoRHS(Position);
-		InternalPosition->set_x(Position.X);
-		InternalPosition->set_y(Position.Y);
-		InternalPosition->set_z(Position.Z);
-	}
-	);
+	DispatchPosition(Position);
 }

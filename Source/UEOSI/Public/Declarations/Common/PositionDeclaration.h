@@ -26,5 +26,7 @@ public:
 protected:
 
 	osi3::Vector3d* InternalPosition;
+
+	void DispatchPosition(FVector Position);
 	
 };

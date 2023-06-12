@@ -27,4 +27,6 @@ public:
 protected:
 
 	osi3::Orientation3d* InternalOrientation;
+
+	void DispatchRotation(FRotator Rotation);
 };

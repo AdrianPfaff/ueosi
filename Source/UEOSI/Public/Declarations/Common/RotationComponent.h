@@ -3,19 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Declarations/Common/PositionDeclaration.h"
-#include "PositionComponent.generated.h"
+#include "Declarations/Common/RotationDeclaration.h"
+#include "RotationComponent.generated.h"
 
 /**
  * 
  */
-UCLASS(DisplayName="Position from Component")
-class UEOSI_API UPositionComponent : public UPositionDeclaration
+UCLASS(DisplayName="Rotation From Component")
+class UEOSI_API URotationComponent : public URotationDeclaration
 {
 	GENERATED_BODY()
 
 public:
-
 	virtual void InitialDispatch() override;
 
 	virtual void Update() override;
@@ -28,6 +27,6 @@ protected:
 	UPROPERTY()
 	USceneComponent* Component;
 
-	FVector LastPosition;
-
+	FRotator LastRotation;
+	
 };
