@@ -3,6 +3,7 @@
 
 #include "OsiThread/OsiWorldSubsystem.h"
 
+#include "OsiSettings.h"
 #include "OsiThread/OsiThread.h"
 
 
@@ -28,4 +29,11 @@ void UOsiWorldSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 void UOsiWorldSubsystem::Deinitialize()
 {
+}
+
+void UOsiWorldSubsystem::SaveOsiTrace(float TimeSeconds)
+{
+	auto Settings=GetDefault<UOsiSettings>();
+	auto Frames=FMath::Pow(Settings->OsiIntervalMS/1000, -1)*TimeSeconds;
+	OsiThread->SaveBuffer(Frames);
 }

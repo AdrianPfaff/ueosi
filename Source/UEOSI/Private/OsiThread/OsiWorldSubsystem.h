@@ -32,6 +32,9 @@ public:
 
 	osi3::GroundTruth* GetGlobalGroundTruth() const { return OsiThread->GetGlobalGroundTruth(); }
 
+	UFUNCTION(BlueprintCallable)
+	void SaveOsiTrace(float TimeSeconds);
+
 private:
 
 	TSharedPtr<FOsiRunnable> OsiThread;
