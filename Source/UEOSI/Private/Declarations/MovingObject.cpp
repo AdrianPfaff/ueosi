@@ -5,6 +5,7 @@
 
 #include "OsiIDProvider.h"
 #include "osi_groundtruth.pb.h"
+#include "Declarations/MovingObject/BaseMoving.h"
 #include "OsiThread/OsiWorldSubsystem.h"
 
 void UMovingObject::Initialize()
@@ -13,6 +14,9 @@ void UMovingObject::Initialize()
 
 	Identifier=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalObject=GroundTruth->add_moving_object();
+
+	BaseMovingDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	BaseMovingDeclaration->Initialize(InternalObject->mutable_base());
 	
 }
 
@@ -22,9 +26,11 @@ void UMovingObject::InitialDispatch()
 	{
 		OsiObject->mutable_id()->set_value(Identifier);
 	});
+
+	BaseMovingDeclaration->InitialDispatch();
 }
 
 void UMovingObject::Update()
 {
-	
+	BaseMovingDeclaration->Update();
 }

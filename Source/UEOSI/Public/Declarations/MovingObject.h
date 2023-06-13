@@ -6,6 +6,8 @@
 #include "Declarations/ObjectDeclaration.h"
 #include "MovingObject.generated.h"
 
+class UBaseMoving;
+
 namespace osi3
 {
 	class MovingObject;
@@ -33,4 +35,7 @@ protected:
 	osi3::MovingObject* InternalObject;
 
 	uint64 Identifier;
+
+	UPROPERTY(EditAnywhere, Category="DECL")
+	UBaseMoving* BaseMovingDeclaration;
 };
