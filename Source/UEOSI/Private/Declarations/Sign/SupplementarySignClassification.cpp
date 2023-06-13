@@ -1,11 +1,11 @@
 // Copyright 2023 Adrian Pfaff
 
 
-#include "Declarations/SupplementarySignClassification.h"
+#include "Declarations/Sign/SupplementarySignClassification.h"
 
 #include "osi_trafficsign.pb.h"
-#include "Declarations/SupplementarySignArrow.h"
-#include "Declarations/TrafficSignValue.h"
+#include "Declarations/Sign/SupplementarySignArrow.h"
+#include "Declarations/Sign/TrafficSignValue.h"
 
 void USupplementarySignClassification::Initialize(
 	osi3::TrafficSign_SupplementarySign_Classification* ClassificationResource)

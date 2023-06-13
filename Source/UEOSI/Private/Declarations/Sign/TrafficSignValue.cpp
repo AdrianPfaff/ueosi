@@ -1,7 +1,7 @@
 // Copyright 2023 Adrian Pfaff
 
 
-#include "Declarations/TrafficSignValue.h"
+#include "Declarations/Sign/TrafficSignValue.h"
 
 #include "osi_trafficsign.pb.h"
 

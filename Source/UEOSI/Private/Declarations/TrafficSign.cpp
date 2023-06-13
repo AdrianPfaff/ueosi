@@ -7,8 +7,8 @@
 #include "osi_groundtruth.pb.h"
 #include "Declarations/Common/BaseStationary.h"
 #include "osi_trafficsign.pb.h"
-#include "Declarations/MainTrafficSignClassification.h"
-#include "Declarations/SupplementaryTrafficSign.h"
+#include "Declarations/Sign/MainTrafficSignClassification.h"
+#include "Declarations/Sign/SupplementaryTrafficSign.h"
 #include "OsiThread/OsiWorldSubsystem.h"
 
 void UTrafficSign::Initialize()

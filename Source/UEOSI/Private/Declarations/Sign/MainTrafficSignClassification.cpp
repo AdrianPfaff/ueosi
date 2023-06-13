@@ -1,11 +1,10 @@
 // Copyright 2023 Adrian Pfaff
 
 
-#include "Declarations/MainTrafficSignClassification.h"
+#include "Declarations/Sign/MainTrafficSignClassification.h"
 
 #include "osi_trafficsign.pb.h"
-#include "Actions/PawnAction.h"
-#include "Declarations/TrafficSignValue.h"
+#include "Declarations/Sign/TrafficSignValue.h"
 
 void UMainTrafficSignClassification::Initialize(osi3::TrafficSign_MainSign_Classification* ClassificationResource)
 {

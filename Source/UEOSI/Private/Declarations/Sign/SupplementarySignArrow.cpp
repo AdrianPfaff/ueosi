@@ -1,7 +1,7 @@
 // Copyright 2023 Adrian Pfaff
 
 
-#include "Declarations/SupplementarySignArrow.h"
+#include "Declarations/Sign/SupplementarySignArrow.h"
 
 #include "osi_trafficsign.pb.h"
 
