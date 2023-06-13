@@ -35,8 +35,7 @@ protected:
 
 	osi3::TrafficSign* InternalSign;
 
-	//TODO: The ID of the traffic sign.
-	//FIdentifier Identifier;
+	uint64 Identifier;
 
 	//The orientation of the bounding box base ( BaseStationary::orientation ) is defined as follows: The z-axis of the given BaseStationary::orientation is the vector from the bottom to the top of the traffic sign's 2D image plate. (Normally it is equal to the ground truth z-axis.) The x-axis of the given BaseStationary::orientation is view normal of the traffic sign's image. This x-axis points from the traffic sign's image in the direction from where a 'viewer' could see the traffic sign image. 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="DECL")

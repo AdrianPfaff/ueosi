@@ -48,7 +48,8 @@ protected:
 	UPROPERTY(EditAnywhere, Category="DECL")
 	ESignDirectionScope DirectionScope;
 
-	//TODO: Add Identifier
+	
+	//TODO: Add assigned lane ids TArray<uint64> 
 
 	UPROPERTY(EditAnywhere, Category="DECL")
 	bool bVerticallyMirrored;
