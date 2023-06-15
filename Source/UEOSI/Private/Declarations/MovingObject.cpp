@@ -7,6 +7,7 @@
 #include "osi_groundtruth.pb.h"
 #include "Declarations/MovingObject/BaseMoving.h"
 #include "Declarations/MovingObject/VehicleAttributes.h"
+#include "Declarations/MovingObject/VehicleClassification.h"
 #include "OsiThread/OsiWorldSubsystem.h"
 
 void UMovingObject::Initialize()
@@ -21,6 +22,9 @@ void UMovingObject::Initialize()
 
 	VehicleAttributes->InternalInit(GetWorld(), OsiSubsystem);
 	VehicleAttributes->Initialize(InternalObject->mutable_vehicle_attributes());
+
+	VehicleClassification->InternalInit(GetWorld(), OsiSubsystem);
+	VehicleClassification->Initialize(InternalObject->mutable_vehicle_classification());
 	
 }
 
@@ -34,11 +38,13 @@ void UMovingObject::InitialDispatch()
 
 	BaseMovingDeclaration->InitialDispatch();
 	VehicleAttributes->InitialDispatch();
+	VehicleClassification->InitialDispatch();
 }
 
 void UMovingObject::Update()
 {
 	BaseMovingDeclaration->Update();
 	VehicleAttributes->Update();
+	VehicleClassification->Update();
 	//TODO: does not support modification yet
 }
