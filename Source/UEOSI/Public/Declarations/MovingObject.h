@@ -7,6 +7,7 @@
 #include "TypeWrappers/MovingObjectEnumWrappers.h"
 #include "MovingObject.generated.h"
 
+class UVehicleAttributes;
 class UBaseMoving;
 
 namespace osi3
@@ -45,7 +46,8 @@ protected:
 
 	//TODO: Add assigned lane ids
 
-	//vehicle attributes
+	UPROPERTY(EditAnywhere, Category="DECL")
+	UVehicleAttributes* VehicleAttributes;
 
 	//vehicle class
 
