@@ -22,9 +22,10 @@ void UMovingObject::Initialize()
 
 void UMovingObject::InitialDispatch()
 {
-	DispatchCommand([OsiObject=InternalObject, Identifier=Identifier]() mutable
+	DispatchCommand([OsiObject=InternalObject, Identifier=Identifier, Type=Type]() mutable
 	{
 		OsiObject->mutable_id()->set_value(Identifier);
+		OsiObject->set_type(static_cast<osi3::MovingObject_Type>(Type));
 	});
 
 	BaseMovingDeclaration->InitialDispatch();
@@ -33,4 +34,6 @@ void UMovingObject::InitialDispatch()
 void UMovingObject::Update()
 {
 	BaseMovingDeclaration->Update();
+
+	//TODO: does not support modification yet
 }

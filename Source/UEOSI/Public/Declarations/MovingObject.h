@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Declarations/ObjectDeclaration.h"
+#include "TypeWrappers/MovingObjectEnumWrappers.h"
 #include "MovingObject.generated.h"
 
 class UBaseMoving;
@@ -38,4 +39,23 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category="DECL")
 	UBaseMoving* BaseMovingDeclaration;
+
+	UPROPERTY(EditAnywhere, Category="DECL")
+	EMovingObjectType Type;
+
+	//TODO: Add assigned lane ids
+
+	//vehicle attributes
+
+	//vehicle class
+
+	//model ref
+
+	//trajectory
+
+	//moving object class
+
+	//source ref
+
+	//color desc
 };
