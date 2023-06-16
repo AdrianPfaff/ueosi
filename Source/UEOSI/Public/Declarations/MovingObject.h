@@ -7,6 +7,7 @@
 #include "TypeWrappers/MovingObjectEnumWrappers.h"
 #include "MovingObject.generated.h"
 
+class UMovingObjectClassification;
 class UVehicleClassification;
 class UVehicleAttributes;
 class UBaseMoving;
@@ -53,13 +54,15 @@ protected:
 	UPROPERTY(EditAnywhere, Category="DECL")
 	UVehicleClassification* VehicleClassification;
 
-	//model ref
+	//TODO: Add model ref
 
-	//trajectory
+	//TODO: Add trajectory
 
-	//moving object class
+	UPROPERTY(EditAnywhere, Category="DECL")
+	UMovingObjectClassification* MovingObjectClassification;
 
-	//source ref
+	//TODO: source ref
 
-	//color desc
+	UPROPERTY(EditAnywhere, Category="DECL")
+	FColor ColorDescription;
 };
