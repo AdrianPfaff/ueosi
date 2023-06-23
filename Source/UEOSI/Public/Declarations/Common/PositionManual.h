@@ -25,6 +25,7 @@ public:
 
 protected:
 
+	//manually specified position
 	UPROPERTY(EditAnywhere, Category="DECL")
 	FVector Position;
 

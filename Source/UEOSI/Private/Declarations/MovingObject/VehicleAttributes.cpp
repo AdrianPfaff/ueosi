@@ -20,8 +20,9 @@ void UVehicleAttributes::Initialize(osi3::MovingObject_VehicleAttributes* Attrib
 
 void UVehicleAttributes::InitialDispatch()
 {
-	DispatchCommand([OsiAttributes=InternalAttributes, NumberOfWheels=NumberOfWheels, GroundClearance=GroundClearance]() mutable
+	DispatchCommand([OsiAttributes=InternalAttributes, NumberOfWheels=NumberOfWheels, GroundClearance=GroundClearance, DriverID=DriverID]() mutable
 	{
+		OsiAttributes->mutable_driver_id()->set_value(DriverID);
 		OsiAttributes->set_number_wheels(NumberOfWheels);
 		OsiAttributes->set_ground_clearance(GroundClearance);
 	});

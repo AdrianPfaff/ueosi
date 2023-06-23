@@ -24,6 +24,7 @@ public:
 
 protected:
 
+	//manually specified BB
 	UPROPERTY(EditAnywhere, Category="DECL")
 	FVector Extent;
 

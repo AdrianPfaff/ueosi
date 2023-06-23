@@ -23,6 +23,7 @@ public:
 
 protected:
 
+	//actor to copy bounding box from
 	UPROPERTY()
 	AActor* Actor;
 

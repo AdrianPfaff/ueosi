@@ -27,7 +27,7 @@ void USupplementarySignClassification::Initialize(
 
 void USupplementarySignClassification::InitialDispatch()
 {
-	DispatchCommand([OsiClassification=InternalClassification, Variability=Variability, Type=Type, Actors=Actors, bIsOutOfService=bIsOutOfService, Country=Country, CountryRevision=CountryRevision, Code=Code, SubCode=SubCode]() mutable
+	DispatchCommand([OsiClassification=InternalClassification, Variability=Variability, Type=Type, Actors=Actors, bIsOutOfService=bIsOutOfService, Country=Country, CountryRevision=CountryRevision, Code=Code, SubCode=SubCode, AssignedLaneIDs=AssignedLaneIDs]() mutable
 	{
 		OsiClassification->set_variability(static_cast<osi3::TrafficSign_Variability>(Variability));
 		OsiClassification->set_type(static_cast<osi3::TrafficSign_SupplementarySign_Classification_Type>(Type));
@@ -40,6 +40,10 @@ void USupplementarySignClassification::InitialDispatch()
 		OsiClassification->set_country_revision(TCHAR_TO_UTF8(*CountryRevision));
 		OsiClassification->set_code(TCHAR_TO_UTF8(*Code));
 		OsiClassification->set_sub_code(TCHAR_TO_UTF8(*SubCode));
+		for (auto LaneID : AssignedLaneIDs)
+		{
+			OsiClassification->add_assigned_lane_id()->set_value(LaneID);
+		}
 	});
 
 	for(auto Value : Values)

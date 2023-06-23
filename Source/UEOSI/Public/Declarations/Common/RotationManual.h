@@ -25,6 +25,7 @@ public:
 
 protected:
 
+	//Manually specified rotation
 	UPROPERTY(EditAnywhere, Category="DECL")
 	FRotator Rotation;
 

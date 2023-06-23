@@ -22,6 +22,7 @@ public:
 
 protected:
 
+	//Component name to copy pos from (in World Space)
 	UPROPERTY(EditAnywhere, Category="DECL", meta=(FullyExpand))
 	FComponentReference ComponentRef;
 

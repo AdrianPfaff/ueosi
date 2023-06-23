@@ -33,19 +33,23 @@ public:
 protected:
 	osi3::MovingObject_VehicleClassification* InternalClassification;
 
+	//The type of the vehicle.
 	UPROPERTY(EditAnywhere, Category="DECL")
 	EVehicleType Type;
 
+	//The light state of the vehicle.
 	UPROPERTY(EditAnywhere, Category="DECL")
 	ULightState* LightState;
 
+	//Flag defining whether the vehicle has an attached trailer.
 	UPROPERTY(EditAnywhere, Category="DECL")
 	bool bHasTrailer;
 
+	//Id of the attached trailer.Note: Field need not be set if has_Trailer is set to false or use value for non valid id.
 	UPROPERTY(EditAnywhere, Category="DECL")
 	uint64 TrailerID;
 
-
+	//The role of the vehicle.
 	UPROPERTY(EditAnywhere, Category="DECL")
 	EVehicleRole Role;
 };

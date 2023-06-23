@@ -41,6 +41,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="DECL")
 	UBaseStationary* MainSignBaseStationary;
 
+	//Main sign, e.g. speed limit 30 km/h
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="DECL")
 	UMainTrafficSignClassification* MainSignClassification;
 

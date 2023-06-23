@@ -30,10 +30,13 @@ protected:
 
 	osi3::MovingObject_MovingObjectClassification* InternalClassification;
 
-	//TODO: Add AssignedLaneIDs
+	//The IDs of the lanes that this object is assigned to. Note: Might be multiple if the object is switching lanes or moving from one lane into another following lane
+	//TODO: Add TArray<uint64> AssignedLaneIDs;
 
-	//TODO: Add AssignedLanePercentages
+	//Percentage value of the object width in the corresponding lane. Note: Might be multiple if the object is switching lanes or moving from one lane into another following lane.
+	//TODO: Add TArray<double> AssignedLanePercentages;
 
+	//Assignment of this object to logical lanes.
 	//TODO: AddLogicalLaneAssignments
 	
 };
