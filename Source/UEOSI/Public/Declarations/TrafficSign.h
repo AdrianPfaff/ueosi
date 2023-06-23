@@ -31,6 +31,15 @@ public:
 	
 	virtual void Update() override;
 
+	UFUNCTION(BlueprintPure)
+	UBaseStationary* GetMainSignBaseStationary() const { return MainSignBaseStationary; }
+
+	UFUNCTION(BlueprintPure)
+	UMainTrafficSignClassification* GetMainSignClassification() const { return MainSignClassification; }
+
+	UFUNCTION(BlueprintCallable)
+	const TArray<USupplementaryTrafficSign*>& GetSupplementarySigns() const { return SupplementarySigns; }
+
 protected:
 
 	osi3::TrafficSign* InternalSign;

@@ -31,6 +31,44 @@ public:
 
 	virtual void Update() override;
 
+	UFUNCTION(BlueprintPure)
+	EMainSignType GetMainSignType() const { return Type; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeSignType(EMainSignType NewType);
+
+	UFUNCTION(BlueprintPure)
+	UTrafficSignValue* GetSignValue() const { return  ValueDeclaration; }
+
+	UFUNCTION(BlueprintPure)
+	ESignDirectionScope GetDirectionScope() const { return  DirectionScope; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeDirectionScope(ESignDirectionScope NewScope);
+
+	UFUNCTION(BlueprintPure)
+	bool IsVerticallyMirrored() const { return bVerticallyMirrored; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeIsVerticallyMirrored(bool bNewIsVerticallyMirrored);
+
+	UFUNCTION(BlueprintPure)
+	bool IsOutOfService() const { return bIsOutOfService; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeOutOfService(bool bNewIsOutOfService);
+
+	UFUNCTION(BlueprintPure)
+	FString GetCountry() const { return Country; }
+
+	UFUNCTION(BlueprintPure)
+	FString GetCountryRevision() const { return CountryRevision; }
+
+	UFUNCTION(BlueprintPure)
+	FString GetCode() const { return Code; }
+
+	UFUNCTION(BlueprintPure)
+	FString GetSubCode() const { return SubCode; }
 
 protected:
 
@@ -82,5 +120,11 @@ protected:
 	//Assignment of this object to logical lanes. 
 	//TODO: Logical Lane Assignment
 	
-	
+	bool bIsDirty=false;
+
+	//marks the osi data dirty
+	void MarkDirty() { bIsDirty=true; }
+
+	//dispatches all values
+	void DispatchAll();
 };
