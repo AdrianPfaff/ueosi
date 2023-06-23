@@ -27,6 +27,25 @@ public:
 
 	virtual void Update() override;
 
+	UFUNCTION(BlueprintPure)
+	double GetValue() const { return Value;}
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeValue(double NewValue);
+
+	UFUNCTION(BlueprintPure)
+	ETrafficSignUnit GetValueUnit() const { return ValueUnit; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeSignUnit(ETrafficSignUnit NewUnit);
+
+	UFUNCTION(BlueprintPure)
+	FText GetText() const { return  Text; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeText(const FText& NewText);
+
+	
 protected:
 
 	osi3::TrafficSignValue* InternalValue;
@@ -42,6 +61,10 @@ protected:
 	//Text associated with a sign, e.g. the name of a location whose distance to the sign is indicated therein. The interpretation of this text is left to a user-defined procedure.
 	UPROPERTY(EditAnywhere, Category="DECL")
 	FText Text;
+
+	bool bIsDirty=false;
+
+	void MarkDirty() { bIsDirty=true; }
 	
-	
+	void DispatchAll();
 };

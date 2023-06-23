@@ -27,6 +27,59 @@ void USupplementarySignClassification::Initialize(
 
 void USupplementarySignClassification::InitialDispatch()
 {
+	DispatchAll();
+
+	for(auto Value : Values)
+	{
+		Value->InitialDispatch();
+	}
+
+	for(auto Arrow : Arrows)
+	{
+		Arrow->InitialDispatch();
+	}
+}
+
+void USupplementarySignClassification::Update()
+{
+	if (bIsDirty)
+	{
+		DispatchAll();
+
+		bIsDirty=false;
+	}
+
+	for(auto Value : Values)
+	{
+		Value->Update();
+	}
+
+	for(auto Arrow : Arrows)
+	{
+		Arrow->Update();
+	}
+}
+
+void USupplementarySignClassification::ChangeSignType(ESupplementarySignType NewSignType)
+{
+	if (Type!=NewSignType)
+	{
+		MarkDirty();
+		Type=NewSignType;
+	}
+}
+
+void USupplementarySignClassification::ChangeIsOutOfService(bool bNewIsOutOfService)
+{
+	if (bIsOutOfService!=bNewIsOutOfService)
+	{
+		MarkDirty();
+		bIsOutOfService=bNewIsOutOfService;
+	}
+}
+
+void USupplementarySignClassification::DispatchAll()
+{
 	DispatchCommand([OsiClassification=InternalClassification, Variability=Variability, Type=Type, Actors=Actors, bIsOutOfService=bIsOutOfService, Country=Country, CountryRevision=CountryRevision, Code=Code, SubCode=SubCode, AssignedLaneIDs=AssignedLaneIDs]() mutable
 	{
 		OsiClassification->set_variability(static_cast<osi3::TrafficSign_Variability>(Variability));
@@ -45,29 +98,4 @@ void USupplementarySignClassification::InitialDispatch()
 			OsiClassification->add_assigned_lane_id()->set_value(LaneID);
 		}
 	});
-
-	for(auto Value : Values)
-	{
-		Value->InitialDispatch();
-	}
-
-	for(auto Arrow : Arrows)
-	{
-		Arrow->InitialDispatch();
-	}
-}
-
-void USupplementarySignClassification::Update()
-{
-	//TODO: Currently does not support changing values
-
-	for(auto Value : Values)
-	{
-		Value->Update();
-	}
-
-	for(auto Arrow : Arrows)
-	{
-		Arrow->Update();
-	}
 }

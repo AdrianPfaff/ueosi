@@ -27,6 +27,9 @@ public:
 
 	virtual void Update() override;
 
+	UFUNCTION(BlueprintCallable)
+	const TArray<EArrowDirection>& GetDirections() { return Directions; }
+
 protected:
 
 	osi3::TrafficSign_SupplementarySign_Classification_Arrow* InternalArrow;

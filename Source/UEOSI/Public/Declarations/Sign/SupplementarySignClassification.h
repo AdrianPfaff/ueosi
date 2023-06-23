@@ -32,6 +32,42 @@ public:
 
 	virtual void Update() override;
 
+	UFUNCTION(BlueprintPure)
+	ETrafficSignVariability GetSignVariability() const { return Variability; }
+
+	UFUNCTION(BlueprintPure)
+	ESupplementarySignType GetSignType() const { return Type; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeSignType(ESupplementarySignType NewSignType);
+
+	UFUNCTION(BlueprintCallable)
+	const TArray<UTrafficSignValue*>& GetSignValues() { return Values; }
+
+	UFUNCTION(BlueprintCallable)
+	const TArray<ESignActor>& GetReferencedActors() { return Actors;}
+
+	UFUNCTION(BlueprintPure)
+	const TArray<USupplementarySignArrow*>& GetArrows() const { return Arrows; }
+
+	UFUNCTION(BlueprintPure)
+	bool IsOutOfService() const { return bIsOutOfService; }
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeIsOutOfService(bool bNewIsOutOfService);
+
+	UFUNCTION(BlueprintPure)
+	FString GetCountry() const { return Country; }
+
+	UFUNCTION(BlueprintPure)
+	FString GetCountryRevision() const { return CountryRevision; }
+
+	UFUNCTION(BlueprintPure)
+	FString GetCode() const { return Code; }
+
+	UFUNCTION(BlueprintPure)
+	FString GetSubCode() const { return SubCode; }
+
 protected:
 
 	osi3::TrafficSign_SupplementarySign_Classification* InternalClassification;
@@ -83,8 +119,11 @@ protected:
 	//Assignment of this object to logical lanes.
 	//TODO: LogicalLaneAssignments
 
-	
+	bool bIsDirty=false;
 
+	void MarkDirty() { bIsDirty=true; }
+
+	void DispatchAll();
 	
 	
 };

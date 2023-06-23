@@ -32,6 +32,7 @@ void UMainTrafficSignClassification::Update()
 	if (bIsDirty)
 	{
 		DispatchAll();
+		bIsDirty=false;
 	}
 	//TODO: Sign classification currently does not support changes
 	
