@@ -24,10 +24,8 @@ public class OSI : ModuleRules
 
 			var Includes=Path.Combine(ModuleDirectory, "Includes");
 			PublicIncludePaths.Add(Includes);
-
 			
-			RuntimeDependencies.Add(Path.Combine(PluginDirectory, "Binaries", "Win64",
-				"libprotobuf.dll"));
+			RuntimeDependencies.Add("$(TargetOutputDir)/libprotobuf.dll", "$(PluginDir)/Binaries/Win64/libprotobuf.dll", StagedFileType.NonUFS);
 
 			//workaround for cryptic error
 			PublicDefinitions.Add("GOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE");
