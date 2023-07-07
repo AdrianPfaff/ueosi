@@ -30,6 +30,9 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	class UBaseStationary* GetBaseStationary() const { return BaseStationary; }
+
+	UFUNCTION(BlueprintPure)
+	FColor GetColorDescription() const { return ColorDescription; }
 	
 protected:
 
