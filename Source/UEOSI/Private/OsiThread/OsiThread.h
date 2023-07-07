@@ -87,6 +87,9 @@ private:
 	//time between each loop. used to wait until next iteration/check if thread has stalled
 	FTimespan DispatchInterval;
 
+	//time when the thread was started. used to calculate timestamps for OSI
+	FDateTime StartTime;
+
 	//allocator for messages. improves performance, thread safe. see https://protobuf.dev/reference/cpp/arenas/
 	google::protobuf::Arena Arena;
 

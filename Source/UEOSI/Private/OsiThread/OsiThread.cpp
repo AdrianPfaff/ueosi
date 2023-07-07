@@ -24,12 +24,18 @@ bool FOsiRunnable::Init()
 {
 	UE_LOG(LogOsiThread, Display, TEXT("Initializing OSI Thread"))
 
+	StartTime=FDateTime::Now();
+
 	auto OsiSettings=GetDefault<UOsiSettings>();
 	DispatchInterval=FTimespan::FromMilliseconds(OsiSettings->OsiIntervalMS);
 	FrameBuffer=TCircularBuffer<FOsiFrame>(OsiSettings->TraceFrameBufferSize);
 	BufferSize=FrameBuffer.Capacity();
 
 	GroundTruth=AllocateMessage<osi3::GroundTruth>();
+
+	GroundTruth->mutable_version()->set_version_major(3);
+	GroundTruth->mutable_version()->set_version_minor(5);
+	GroundTruth->mutable_version()->set_version_patch(0);
 
 	//allocate messages
 	do
@@ -47,6 +53,10 @@ uint32 FOsiRunnable::Run()
 	{
 		//calculate when next dispatch should happen
 		NextDispatch=FDateTime::Now()+DispatchInterval;
+
+		auto Timestamp=FDateTime::Now()-StartTime;
+		GroundTruth->mutable_timestamp()->set_seconds(Timestamp.GetTotalSeconds());
+		GroundTruth->mutable_timestamp()->set_nanos(Timestamp.GetFractionNano());
 
 		//process all commands
 		while (!CommandQueue.IsEmpty())
