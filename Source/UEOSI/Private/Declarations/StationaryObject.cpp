@@ -6,6 +6,7 @@
 #include "OsiIDProvider.h"
 #include "osi_groundtruth.pb.h"
 #include "Declarations/Common/BaseStationary.h"
+#include "Declarations/StationaryObject/StationaryObjectClassification.h"
 #include "OsiThread/OsiWorldSubsystem.h"
 
 void UStationaryObject::Initialize()
@@ -17,6 +18,9 @@ void UStationaryObject::Initialize()
 
 	BaseStationary->InternalInit(GetWorld(), OsiSubsystem);
 	BaseStationary->Initialize(InternalStationary->mutable_base());
+
+	ObjectClassification->InternalInit(GetWorld(), OsiSubsystem);
+	ObjectClassification->Initialize(InternalStationary->mutable_classification());
 }
 
 void UStationaryObject::InitialDispatch()
@@ -27,10 +31,12 @@ void UStationaryObject::InitialDispatch()
 	});
 
 	BaseStationary->InitialDispatch();
+	ObjectClassification->InitialDispatch();
 }
 
 void UStationaryObject::Update()
 {
 
 	BaseStationary->Update();
+	ObjectClassification->Update();
 }

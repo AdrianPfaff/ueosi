@@ -43,6 +43,8 @@ protected:
 	class UBaseStationary* BaseStationary;
 
 	//The classification of the stationary object.
+	UPROPERTY(EditAnywhere, Category="DECL")
+	class UStationaryObjectClassification* ObjectClassification;
 
 	//Opaque reference of an associated 3D model of the stationary object.
 
