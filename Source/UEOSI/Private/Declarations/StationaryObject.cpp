@@ -25,9 +25,14 @@ void UStationaryObject::Initialize()
 
 void UStationaryObject::InitialDispatch()
 {
-	DispatchCommand([OsiStationary=InternalStationary, Identifier=Identifier]()
+	DispatchCommand([OsiStationary=InternalStationary, Identifier=Identifier, ModelReference=ModelReference, ColorDescription=ColorDescription]()
 	{
 		OsiStationary->mutable_id()->set_value(Identifier);
+		OsiStationary->set_model_reference(TCHAR_TO_UTF8(*ModelReference));
+		////TODO: are these colors correct? osi makes no mention of format, encoding, srgb gamma etrc.
+		OsiStationary->mutable_color_description()->mutable_rgb()->set_red(ColorDescription.R);
+		OsiStationary->mutable_color_description()->mutable_rgb()->set_green(ColorDescription.G);
+		OsiStationary->mutable_color_description()->mutable_rgb()->set_blue(ColorDescription.B);
 	});
 
 	BaseStationary->InitialDispatch();
@@ -36,7 +41,6 @@ void UStationaryObject::InitialDispatch()
 
 void UStationaryObject::Update()
 {
-
 	BaseStationary->Update();
 	ObjectClassification->Update();
 }
