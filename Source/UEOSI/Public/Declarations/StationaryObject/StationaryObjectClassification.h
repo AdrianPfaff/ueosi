@@ -28,6 +28,15 @@ public:
 
 	virtual void Update() override;
 
+	UFUNCTION(BlueprintPure)
+	EStationaryObjectType GetObjectType() const { return Type; }
+
+	UFUNCTION(BlueprintPure)
+	EStationaryObjectMaterial GetObjectMaterial() const { return Material; }
+
+	UFUNCTION(BlueprintPure)
+	EStationaryObjectDensity GetObjectDensity() const { return Density; }
+	
 protected:
 
 	osi3::StationaryObject_Classification* InternalClassification;
