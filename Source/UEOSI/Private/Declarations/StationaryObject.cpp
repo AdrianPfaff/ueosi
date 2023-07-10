@@ -13,7 +13,7 @@ void UStationaryObject::Initialize()
 {
 	auto GroundTruth=OsiSubsystem->GetGlobalGroundTruth();
 
-	FOsiIDProvider::DefaultProvider().RequestID();
+	Identifier=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalStationary=GroundTruth->add_stationary_object();
 
 	BaseStationary->InternalInit(GetWorld(), OsiSubsystem);
