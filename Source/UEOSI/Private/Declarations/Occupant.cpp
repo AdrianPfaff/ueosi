@@ -5,6 +5,7 @@
 
 #include "OsiIDProvider.h"
 #include "osi_groundtruth.pb.h"
+#include "Declarations/Occupant/OccupantClassification.h"
 #include "OsiThread/OsiWorldSubsystem.h"
 
 void UOccupant::Initialize()
@@ -13,7 +14,8 @@ void UOccupant::Initialize()
 	DriverID=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalOccupant=GroundTruth->add_occupant();
 
-	
+	Classification->InternalInit(GetWorld(), OsiSubsystem);
+	Classification->Initialize(InternalOccupant->mutable_classification());
 }
 
 void UOccupant::InitialDispatch()
@@ -22,9 +24,10 @@ void UOccupant::InitialDispatch()
 	{
 		OsiOccupant->mutable_id()->set_value(DriverID);
 	});
+	Classification->InitialDispatch();
 }
 
 void UOccupant::Update()
 {
-	
+	Classification->Update();
 }
