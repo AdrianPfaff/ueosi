@@ -24,8 +24,12 @@ bool FOsiIDProvider::AddReservedID(uint64 InID)
 uint64 FOsiIDProvider::RequestID()
 {
 	FScopeLock ScopeLock(&Section);
-
-	return NextID++;
+	auto NewID=NextID++;
+	while (ReservedIDs.Contains(NewID))
+	{
+		NewID=NextID++;
+	}
+	return NewID;
 }
 
 FOsiIDProvider& FOsiIDProvider::DefaultProvider()
