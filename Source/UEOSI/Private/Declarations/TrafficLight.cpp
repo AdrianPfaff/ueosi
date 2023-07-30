@@ -5,6 +5,7 @@
 
 #include "OsiIDProvider.h"
 #include "osi_groundtruth.pb.h"
+#include "Declarations/Light/TrafficLightClassification.h"
 #include "OsiThread/OsiWorldSubsystem.h"
 
 void UTrafficLight::Initialize()
@@ -13,6 +14,9 @@ void UTrafficLight::Initialize()
 
 	Identifier=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalLight=GroundTruth->add_traffic_light();
+
+	Classification->InternalInit(GetWorld(), OsiSubsystem);
+	Classification->Initialize(InternalLight->mutable_classification());
 }
 
 void UTrafficLight::InitialDispatch()
@@ -25,9 +29,13 @@ void UTrafficLight::InitialDispatch()
 		OsiLight->mutable_color_description()->mutable_rgb()->set_green(Color.G);
 		OsiLight->mutable_color_description()->mutable_rgb()->set_blue(Color.B);
 	});
+
+	Classification->InitialDispatch();
 }
 
 void UTrafficLight::Update()
 {
 	//TODO: Does not support updating fields
+
+	Classification->Update();
 }

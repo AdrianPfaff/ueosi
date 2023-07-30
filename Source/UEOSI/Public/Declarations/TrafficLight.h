@@ -6,6 +6,7 @@
 #include "Declarations/ObjectDeclaration.h"
 #include "TrafficLight.generated.h"
 
+class UTrafficLightClassification;
 class UBaseStationary;
 
 namespace osi3
@@ -39,7 +40,8 @@ protected:
 	UBaseStationary* BaseStationary;
 
 	//The classification data for the traffic light.
-
+	UPROPERTY(EditAnywhere, Category="DECL")
+	UTrafficLightClassification* Classification;
 
 	//Opaque reference of an associated 3D model of the traffic light.
 	//UPROPERTY(EditAnywhere, Category="DECL")
