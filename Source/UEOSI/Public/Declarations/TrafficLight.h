@@ -29,6 +29,15 @@ public:
 	
 	virtual void Update() override;
 
+	UFUNCTION(BlueprintPure)
+	UBaseStationary* GetBaseStationary() const { return BaseStationary; }
+
+	UFUNCTION(BlueprintPure)
+	UTrafficLightClassification* GetClassification() const { return Classification; }
+
+	UFUNCTION(BlueprintPure)
+	FColor GetColorDescription() const { return ColorDescription; }
+
 protected:
 
 	osi3::TrafficLight* InternalLight;

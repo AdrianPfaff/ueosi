@@ -28,6 +28,21 @@ public:
 	virtual void Update() override;
 
 
+	UFUNCTION(BlueprintPure)
+	ETrafficLightColor GetColor() const { return Color; }
+
+	UFUNCTION(BlueprintPure)
+	ETrafficLightIcon GetIcon() const { return Icon; }
+
+	UFUNCTION(BlueprintPure)
+	ETrafficLightMode GetMode() const { return Mode; }
+
+	UFUNCTION(BlueprintPure)
+	double GetCounter() const { return Counter; }
+
+	UFUNCTION(BlueprintPure)
+	bool GetIsOutOfService() const { return bIsOutOfService; }
+
 protected:
 
 	osi3::TrafficLight_Classification* InternalClassification;
