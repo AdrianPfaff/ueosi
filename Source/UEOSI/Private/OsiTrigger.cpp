@@ -14,3 +14,7 @@ void UOsiTrigger::OnTriggered_Implementation()
 }
 
 
+void UOsiTrigger::Setup_Implementation(UOsiParticipantComponent* Component)
+{
+	ParticipantComponent=Component;
+}

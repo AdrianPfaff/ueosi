@@ -6,6 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "OsiTrigger.generated.h"
 
+class UOsiParticipantComponent;
 /**
  * 
  */
@@ -16,11 +17,25 @@ class UEOSI_API UOsiTrigger : public UObject
 
 public:
 	UFUNCTION(BlueprintNativeEvent)
+	void Setup(UOsiParticipantComponent* Component);
+	UFUNCTION(BlueprintNativeEvent)
 	void WatchValue();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void OnTriggered();
 protected:
 
+	UFUNCTION(BlueprintPure)
+	UOsiParticipantComponent* GetParticipantComponent() const
+	{
+		if (!ParticipantComponent)
+		{
+			UE_LOG(LogTemp, Error, TEXT("Override Setup function but keep super call!"))
+		}
+		return ParticipantComponent;
+	}
+
+	UPROPERTY(BlueprintReadOnly, BlueprintGetter=GetParticipantComponent)
+	UOsiParticipantComponent* ParticipantComponent;
 	
 };
