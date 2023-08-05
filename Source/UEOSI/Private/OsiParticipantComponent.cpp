@@ -10,6 +10,7 @@
 #include "Declarations/TrafficLight.h"
 #include "Declarations/TrafficSign.h"
 #include "Declarations/Occupant.h"
+#include "OsiTrigger.h"
 
 UOsiParticipantComponent::UOsiParticipantComponent()
 {
@@ -35,6 +36,11 @@ void UOsiParticipantComponent::BeginPlay()
 	{
 		Decl->InitialDispatch();
 	}
+
+	for (const auto& Trigger : Triggers)
+	{
+		Trigger->Setup(this);
+	}
 }
 
 void UOsiParticipantComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -45,6 +51,11 @@ void UOsiParticipantComponent::TickComponent(float DeltaTime, ELevelTick TickTyp
 	for(auto Decl : ParticipantDeclarations)
 	{
 		Decl->Update();
+	}
+
+	for (const auto& Trigger : Triggers)
+	{
+		Trigger->WatchValue();
 	}
 }
 

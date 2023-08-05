@@ -7,6 +7,7 @@
 #include "OsiParticipantComponent.generated.h"
 
 
+class UOsiTrigger;
 class UTrafficLight;
 class UObjectDeclaration;
 class UTrafficSign;
@@ -46,5 +47,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Instanced)
 	TArray<UObjectDeclaration*> ParticipantDeclarations;
+
+	UPROPERTY(EditAnywhere, Instanced)
+	TArray<UOsiTrigger*> Triggers;
 		
 };
