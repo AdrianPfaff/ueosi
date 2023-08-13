@@ -37,3 +37,10 @@ FOsiIDProvider& FOsiIDProvider::DefaultProvider()
 	static FOsiIDProvider Singleton;
 	return Singleton;
 }
+
+void FOsiIDProvider::Reset()
+{
+	FScopeLock ScopeLock(&Section);
+	NextID=0;
+	ReservedIDs.Empty();
+}

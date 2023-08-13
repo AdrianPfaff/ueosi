@@ -3,6 +3,7 @@
 
 #include "OsiThread/OsiWorldSubsystem.h"
 
+#include "OsiIDProvider.h"
 #include "OsiSettings.h"
 #include "OsiThread/OsiThread.h"
 
@@ -29,6 +30,7 @@ void UOsiWorldSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 void UOsiWorldSubsystem::Deinitialize()
 {
+	FOsiIDProvider::DefaultProvider().Reset();
 }
 
 void UOsiWorldSubsystem::SaveOsiTrace(float TimeSeconds)

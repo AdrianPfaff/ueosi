@@ -14,6 +14,9 @@ public:
 
 	static FOsiIDProvider& DefaultProvider();
 
+	//frees all ids and begins counting a new. called from osi world subsystem on shutdown
+	void Reset();
+
 private:
 	
 	uint64 NextID=0;
