@@ -10,7 +10,7 @@ class UOsiParticipantComponent;
 /**
  * 
  */
-UCLASS(Blueprintable, Abstract)
+UCLASS(Blueprintable, EditInlineNew, DefaultToInstanced, BlueprintType)
 class UEOSI_API UOsiTrigger : public UObject
 {
 	GENERATED_BODY()
