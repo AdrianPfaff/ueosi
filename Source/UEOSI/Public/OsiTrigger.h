@@ -17,11 +17,11 @@ class UEOSI_API UOsiTrigger : public UObject
 
 public:
 	UFUNCTION(BlueprintNativeEvent)
-	void Setup(UOsiParticipantComponent* Component);
+	void Setup(UOsiParticipantComponent* Component, UWorld* World);
 	UFUNCTION(BlueprintNativeEvent)
 	void Observe();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void Trigger();
 protected:
 
@@ -37,5 +37,16 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, BlueprintGetter=GetParticipantComponent)
 	UOsiParticipantComponent* ParticipantComponent;
-	
+
+	UPROPERTY()
+	UWorld* WorldHandle;
+
+	virtual UWorld* GetWorld() const override
+	{
+		if (!WorldHandle)
+		{
+			UE_LOG(LogTemp, Error, TEXT("Override Setup function but keep super call!"))
+		}
+		return WorldHandle;
+	}
 };

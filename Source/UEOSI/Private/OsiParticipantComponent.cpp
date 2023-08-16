@@ -39,7 +39,7 @@ void UOsiParticipantComponent::BeginPlay()
 
 	for (const auto& Trigger : Triggers)
 	{
-		Trigger->Setup(this);
+		Trigger->Setup(this, GetWorld());
 	}
 }
 

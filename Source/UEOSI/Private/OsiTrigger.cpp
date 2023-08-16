@@ -14,7 +14,8 @@ void UOsiTrigger::Trigger_Implementation()
 }
 
 
-void UOsiTrigger::Setup_Implementation(UOsiParticipantComponent* Component)
+void UOsiTrigger::Setup_Implementation(UOsiParticipantComponent* Component, UWorld* World)
 {
+    WorldHandle=World;
 	ParticipantComponent=Component;
 }
