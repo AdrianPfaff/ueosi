@@ -10,7 +10,7 @@ class UOsiParticipantComponent;
 /**
  * 
  */
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, Abstract)
 class UEOSI_API UOsiTrigger : public UObject
 {
 	GENERATED_BODY()
@@ -19,10 +19,10 @@ public:
 	UFUNCTION(BlueprintNativeEvent)
 	void Setup(UOsiParticipantComponent* Component);
 	UFUNCTION(BlueprintNativeEvent)
-	void WatchValue();
+	void Observe();
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void OnTriggered();
+	UFUNCTION(BlueprintNativeEvent)
+	void Trigger();
 protected:
 
 	UFUNCTION(BlueprintPure)

@@ -3,14 +3,14 @@
 
 #include "OsiTrigger.h"
 
-void UOsiTrigger::WatchValue_Implementation()
+void UOsiTrigger::Observe_Implementation()
 {
-	UE_LOG(LogTemp, Error, TEXT("Do not call default implementation of WatchValue, override!"));
+	UE_LOG(LogTemp, Error, TEXT("Do not call default implementation of Observe, override!"));
 }
 
-void UOsiTrigger::OnTriggered_Implementation()
+void UOsiTrigger::Trigger_Implementation()
 {
-	UE_LOG(LogTemp, Error, TEXT("Do not call default implementation of OnTriggered, override!"));
+	UE_LOG(LogTemp, Error, TEXT("Do not call default implementation of Trigger, override!"));
 }
 
 

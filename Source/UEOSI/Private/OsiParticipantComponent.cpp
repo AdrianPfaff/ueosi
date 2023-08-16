@@ -55,7 +55,7 @@ void UOsiParticipantComponent::TickComponent(float DeltaTime, ELevelTick TickTyp
 
 	for (const auto& Trigger : Triggers)
 	{
-		Trigger->WatchValue();
+		Trigger->Observe();
 	}
 }
 
