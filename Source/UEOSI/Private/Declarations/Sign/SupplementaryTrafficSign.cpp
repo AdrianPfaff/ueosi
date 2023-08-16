@@ -11,10 +11,10 @@ void USupplementaryTrafficSign::Initialize(osi3::TrafficSign_SupplementarySign* 
 {
 	InternalSign=SignResource;
 
-	BaseStationary->InternalInit(GetWorld(), OsiSubsystem);
+	BaseStationary->PreInit(GetWorld(), OsiSubsystem);
 	BaseStationary->Initialize(InternalSign->mutable_base());
 
-	SupplementaryClassification->InternalInit(GetWorld(), OsiSubsystem);
+	SupplementaryClassification->PreInit(GetWorld(), OsiSubsystem);
 	SupplementaryClassification->Initialize(InternalSign->mutable_classification());
 	
 }

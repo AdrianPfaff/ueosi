@@ -11,10 +11,10 @@ void UWheelData::Initialize(osi3::MovingObject_VehicleAttributes_WheelData* Whee
 {
 	InternalWheel=WheelResource;
 
-	PositionDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	PositionDeclaration->PreInit(GetWorld(), OsiSubsystem);
 	PositionDeclaration->Initialize(InternalWheel->mutable_position());
 
-	RotationDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	RotationDeclaration->PreInit(GetWorld(), OsiSubsystem);
 	RotationDeclaration->Initialize(InternalWheel->mutable_orientation());
 }
 

@@ -14,7 +14,7 @@ void UOccupant::Initialize()
 	DriverID=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalOccupant=GroundTruth->add_occupant();
 
-	Classification->InternalInit(GetWorld(), OsiSubsystem);
+	Classification->PreInit(GetWorld(), OsiSubsystem);
 	Classification->Initialize(InternalOccupant->mutable_classification());
 }
 

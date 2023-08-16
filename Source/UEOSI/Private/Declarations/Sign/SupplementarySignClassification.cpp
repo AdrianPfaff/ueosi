@@ -14,13 +14,13 @@ void USupplementarySignClassification::Initialize(
 
 	for(auto Value : Values)
 	{
-		Value->InternalInit(GetWorld(), OsiSubsystem);
+		Value->PreInit(GetWorld(), OsiSubsystem);
 		Value->Initialize(InternalClassification->add_value());
 	}
 
 	for(auto Arrow : Arrows)
 	{
-		Arrow->InternalInit(GetWorld(), OsiSubsystem);
+		Arrow->PreInit(GetWorld(), OsiSubsystem);
 		Arrow->Initialize(InternalClassification->add_arrow());
 	}
 }

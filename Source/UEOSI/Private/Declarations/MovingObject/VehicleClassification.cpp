@@ -10,7 +10,7 @@ void UVehicleClassification::Initialize(osi3::MovingObject_VehicleClassification
 {
 	InternalClassification=ClassificationResource;
 
-	LightState->InternalInit(GetWorld(), OsiSubsystem);
+	LightState->PreInit(GetWorld(), OsiSubsystem);
 	LightState->Initialize(InternalClassification->mutable_light_state());
 }
 

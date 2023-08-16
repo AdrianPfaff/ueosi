@@ -18,16 +18,16 @@ void UMovingObject::Initialize()
 	Identifier=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalObject=GroundTruth->add_moving_object();
 
-	BaseMovingDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	BaseMovingDeclaration->PreInit(GetWorld(), OsiSubsystem);
 	BaseMovingDeclaration->Initialize(InternalObject->mutable_base());
 
-	VehicleAttributes->InternalInit(GetWorld(), OsiSubsystem);
+	VehicleAttributes->PreInit(GetWorld(), OsiSubsystem);
 	VehicleAttributes->Initialize(InternalObject->mutable_vehicle_attributes());
 
-	VehicleClassification->InternalInit(GetWorld(), OsiSubsystem);
+	VehicleClassification->PreInit(GetWorld(), OsiSubsystem);
 	VehicleClassification->Initialize(InternalObject->mutable_vehicle_classification());
 
-	MovingObjectClassification->InternalInit(GetWorld(), OsiSubsystem);
+	MovingObjectClassification->PreInit(GetWorld(), OsiSubsystem);
 	MovingObjectClassification->Initialize(InternalObject->mutable_moving_object_classification());
 	
 }

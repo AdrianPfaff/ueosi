@@ -12,7 +12,7 @@ void UVehicleAttributes::Initialize(osi3::MovingObject_VehicleAttributes* Attrib
 
 	for(auto WheelData : WheelsData)
 	{
-		WheelData->InternalInit(GetWorld(), OsiSubsystem);
+		WheelData->PreInit(GetWorld(), OsiSubsystem);
 		WheelData->Initialize(InternalAttributes->add_wheel_data());
 	}
 	

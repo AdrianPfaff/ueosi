@@ -16,10 +16,10 @@ void UStationaryObject::Initialize()
 	Identifier=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalStationary=GroundTruth->add_stationary_object();
 
-	BaseStationary->InternalInit(GetWorld(), OsiSubsystem);
+	BaseStationary->PreInit(GetWorld(), OsiSubsystem);
 	BaseStationary->Initialize(InternalStationary->mutable_base());
 
-	ObjectClassification->InternalInit(GetWorld(), OsiSubsystem);
+	ObjectClassification->PreInit(GetWorld(), OsiSubsystem);
 	ObjectClassification->Initialize(InternalStationary->mutable_classification());
 }
 

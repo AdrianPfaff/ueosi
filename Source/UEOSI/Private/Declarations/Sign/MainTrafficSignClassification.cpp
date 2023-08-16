@@ -12,7 +12,7 @@ void UMainTrafficSignClassification::Initialize(osi3::TrafficSign_MainSign_Class
 
 	if(ValueDeclaration)
 	{
-		ValueDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+		ValueDeclaration->PreInit(GetWorld(), OsiSubsystem);
 		ValueDeclaration->Initialize(InternalClassification->mutable_value());
 	}
 	

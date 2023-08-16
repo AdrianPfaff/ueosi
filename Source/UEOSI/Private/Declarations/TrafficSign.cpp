@@ -18,15 +18,15 @@ void UTrafficSign::Initialize()
 	Identifier=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalSign=GroundTruth->add_traffic_sign();
 
-	MainSignBaseStationary->InternalInit(GetWorld(), OsiSubsystem);
+	MainSignBaseStationary->PreInit(GetWorld(), OsiSubsystem);
 	MainSignBaseStationary->Initialize(InternalSign->mutable_main_sign()->mutable_base());
 
-	MainSignClassification->InternalInit(GetWorld(), OsiSubsystem);
+	MainSignClassification->PreInit(GetWorld(), OsiSubsystem);
 	MainSignClassification->Initialize(InternalSign->mutable_main_sign()->mutable_classification());
 
 	for(auto Sign : SupplementarySigns)
 	{
-		Sign->InternalInit(GetWorld(), OsiSubsystem);
+		Sign->PreInit(GetWorld(), OsiSubsystem);
 		Sign->Initialize(InternalSign->add_supplementary_sign());
 	}
 }

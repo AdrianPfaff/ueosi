@@ -12,13 +12,13 @@ void UBaseStationary::Initialize(osi3::BaseStationary* OsiResource)
 {
 	InternalBaseStationary=OsiResource;
 
-	PositionDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	PositionDeclaration->PreInit(GetWorld(), OsiSubsystem);
 	PositionDeclaration->Initialize(InternalBaseStationary->mutable_position());
 
-	RotationDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	RotationDeclaration->PreInit(GetWorld(), OsiSubsystem);
 	RotationDeclaration->Initialize(InternalBaseStationary->mutable_orientation());
 
-	BoundingBoxDeclaration->InternalInit(GetWorld(), OsiSubsystem);
+	BoundingBoxDeclaration->PreInit(GetWorld(), OsiSubsystem);
 	BoundingBoxDeclaration->Initialize(InternalBaseStationary->mutable_dimension());
 }
 
