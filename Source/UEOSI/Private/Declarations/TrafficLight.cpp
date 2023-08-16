@@ -15,7 +15,7 @@ void UTrafficLight::Initialize()
 	Identifier=FOsiIDProvider::DefaultProvider().RequestID();
 	InternalLight=GroundTruth->add_traffic_light();
 
-	Classification->InternalInit(GetWorld(), OsiSubsystem);
+	Classification->PreInit(GetWorld(), OsiSubsystem);
 	Classification->Initialize(InternalLight->mutable_classification());
 }
 

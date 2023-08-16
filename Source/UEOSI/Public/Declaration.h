@@ -17,7 +17,7 @@ class UEOSI_API UDeclaration : public UObject
 
 public:
 
-	void InternalInit(UWorld* InWorld, UOsiWorldSubsystem* InSubsystem);
+	void PreInit(UWorld* InWorld, UOsiWorldSubsystem* InSubsystem);
 
 	//first dispatch filling in initial messages 
 	virtual void InitialDispatch() {}

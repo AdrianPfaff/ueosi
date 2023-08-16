@@ -4,7 +4,7 @@
 #include "Declaration.h"
 #include "OsiThread/OsiWorldSubsystem.h"
 
-void UDeclaration::InternalInit(UWorld* InWorld, UOsiWorldSubsystem* InSubsystem)
+void UDeclaration::PreInit(UWorld* InWorld, UOsiWorldSubsystem* InSubsystem)
 {
 	World=InWorld;
 	OsiSubsystem=InSubsystem;

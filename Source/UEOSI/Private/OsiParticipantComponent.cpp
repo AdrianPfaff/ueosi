@@ -27,7 +27,7 @@ void UOsiParticipantComponent::BeginPlay()
 	//acquire initial resources from thread
 	for (auto Decl : ParticipantDeclarations)
 	{
-		Decl->InternalInit(GetWorld(), OsiSubsystem);
+		Decl->PreInit(GetWorld(), OsiSubsystem);
 		Decl->Initialize();
 	}
 
