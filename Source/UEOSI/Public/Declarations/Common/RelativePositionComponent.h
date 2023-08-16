@@ -22,14 +22,14 @@ public:
 protected:
 
 	//reference frame component, for example car center
-	UPROPERTY(EditAnywhere, Category="DECL");
+	UPROPERTY(EditAnywhere);
 	FComponentReference OriginComponentRef;
 
 	UPROPERTY()
 	USceneComponent* OriginComponent;
 
 	//target component, for example car wheel
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	FComponentReference TargetComponentRef;
 
 	UPROPERTY()

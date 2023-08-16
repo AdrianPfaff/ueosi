@@ -26,7 +26,7 @@ public:
 protected:
 
 	//Manually specified rotation
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	FRotator Rotation;
 
 	bool bRotationHasChanged=false;

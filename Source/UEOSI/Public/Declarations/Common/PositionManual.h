@@ -26,7 +26,7 @@ public:
 protected:
 
 	//manually specified position
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	FVector Position;
 
 	bool bPositionHasChanged=false;

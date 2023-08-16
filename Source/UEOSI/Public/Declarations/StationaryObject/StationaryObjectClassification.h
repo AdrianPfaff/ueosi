@@ -42,15 +42,15 @@ protected:
 	osi3::StationaryObject_Classification* InternalClassification;
 
 	//The type of the object.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	EStationaryObjectType Type;
 
 	//The dominating material of the structure.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	EStationaryObjectMaterial Material;
 
 	//The dominating density of the material of the structure.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	EStationaryObjectDensity Density;
 	
 	//color is deprecated, use color description of parent
@@ -60,7 +60,7 @@ protected:
 	
 
 	//The IDs of the lanes that the object is assigned to.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	TArray<uint64> AssignedLaneIDs;
 
 	//Percentage values of the object width in the corresponding lane.

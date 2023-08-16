@@ -48,26 +48,26 @@ protected:
 	osi3::TrafficLight_Classification* InternalClassification;
 
 	//The semantic color of the traffic light. Note: The color types represent the semantic color classification of a traffic light only. They do not represent an actual visual appearance. If the color of the traffic light is known (from history or geometrical arrangement) and the state mode is MODE_OFF then color could remain unchanged. If traffic light displays images in different colors and traffic light is off ( mode = MODE_OFF), then color = COLOR_OTHER.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	ETrafficLightColor Color;
 
 	//The icon of the traffic light.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	ETrafficLightIcon Icon;
 	
 	//The operating mode of the traffic light.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	ETrafficLightMode Mode;
 
 	//The value of the countdown counter. Unit: % or s  Note: Set value only if traffic light bulb is a countdown counter.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	double Counter=-1;
 
 	//The IDs of the lanes that the traffic light is assigned to.Might be multiple if the traffic light is valid for multiple driving lanes.
 	//TODO: Add assigned Lane IDs
 
 	//Boolean flag to indicate that the traffic light is taken out of service. This can be achieved by visibly crossing the light, covering it completely or swiching the traffic light off.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	bool bIsOutOfService;
 	
 	//Assignment of this object to logical lanes.

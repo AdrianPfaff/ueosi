@@ -19,11 +19,6 @@
 			"Name": "UEOSI",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
-		},
-		{
-			"Name": "UEOSIEditor",
-			"Type": "Editor",
-			"LoadingPhase": "Default"
 		}
 	]
 }

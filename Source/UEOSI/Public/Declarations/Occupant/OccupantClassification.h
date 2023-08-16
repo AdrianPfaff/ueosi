@@ -42,14 +42,14 @@ protected:
 	osi3::Occupant_Classification* InternalClassification;
 
 	//Flag determining whether the person is the driver of the vehicle or a passenger.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	bool bIsDriver;
 
 	//Seat position of the vehicle occupant.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	EOccupantSeat Seat;
 	
 	//Describes the state of the passenger's hands related to the steering wheel (mostly driver).
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	ESteeringControl SteeringControl;
 };

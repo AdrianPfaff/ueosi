@@ -22,7 +22,7 @@ public:
 protected:
 
 	//component to copy rotation from (World Space)
-	UPROPERTY(EditAnywhere, Category="DECL", meta=(FullyExpand))
+	UPROPERTY(EditAnywhere, meta=(FullyExpand))
 	FComponentReference ComponentRef;
 
 	UPROPERTY()

@@ -36,15 +36,15 @@ protected:
 	osi3::BaseMoving* InternalMoving;
 
 	//The 3D dimension of the moving object (its bounding box). Note: The bounding box does NOT include side mirrors for vehicles.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	UBoundingBoxDeclaration* BoundingBoxDeclaration;
 
 	//The reference point for position and orientation: the center (x,y,z) of the bounding box.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	UPositionDeclaration* PositionDeclaration;
 
 	//The relative orientation of the moving object w.r.t. its parent frame, noted in the parent frame. The orientation becomes global/absolute if the parent frame is inertial (all parent frames up to ground truth). Originbase moving entity:=Rotationyaw,pitch,roll( orientation )∗(Originparent coord system− position ) Note: There may be some constraints how to align the orientation w.r.t. to some stationary object's or entity's definition.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	URotationDeclaration* RotationDeclaration;
 
 	//The relative velocity of the moving object w.r.t. the parent frame, noted in the parent frame. The velocity becomes global/absolute if the parent frame does is inertial (all parent frames up to ground truth). position (t):= position (t−dt)+ velocity ∗dt

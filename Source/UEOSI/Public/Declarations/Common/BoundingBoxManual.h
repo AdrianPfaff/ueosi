@@ -25,7 +25,7 @@ public:
 protected:
 
 	//manually specified BB
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	FVector Extent;
 
 	bool bExtentHasChanged=false;

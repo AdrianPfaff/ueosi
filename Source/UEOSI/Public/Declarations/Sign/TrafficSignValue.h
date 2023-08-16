@@ -51,15 +51,15 @@ protected:
 	osi3::TrafficSignValue* InternalValue;
 
 	//Additional value associated with a traffic sign or road marking, e.g. value of a speed limit.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	double Value;
 
 	//Unit for additional value.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	ETrafficSignUnit ValueUnit;
 
 	//Text associated with a sign, e.g. the name of a location whose distance to the sign is indicated therein. The interpretation of this text is left to a user-defined procedure.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	FText Text;
 
 	bool bIsDirty=false;

@@ -37,7 +37,7 @@ protected:
 	uint64 DriverID;
 
 	//Specific information about the classification of the occupant.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	UOccupantClassification* Classification;
 
 	//External reference to the occupant source. Note:For OpenDRIVE and OpenSCENARIO there is no direct counterpart. For non-ASAM Standards, it is implementation-specific how source_reference is resolved. The value has to be repeated because one object may be derived from more than one origin source, for example, from a scenario file and from sensors. 

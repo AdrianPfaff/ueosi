@@ -42,21 +42,21 @@ protected:
 
 
 	//The base parameters of the stationary object.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	class UBaseStationary* BaseStationary;
 
 	//The classification of the stationary object.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	class UStationaryObjectClassification* ObjectClassification;
 
 	//Opaque reference of an associated 3D model of the stationary object.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	FString ModelReference;
 	
 	//External reference to the stationary-object source. The external reference points to the source of a stationary object, if it is derived from an external sources like OpenDRIVE or OpenSCENARIO.
 	//TODO: Add Source reference
 	
 	//The dominating color of the material of the structure.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	FColor ColorDescription;
 };

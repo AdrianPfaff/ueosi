@@ -35,13 +35,13 @@ protected:
 	osi3::MovingObject_VehicleAttributes* InternalAttributes;
 
 	//The ID of the driver of the (host) vehicle. Note: Field need not be set if host_vehicle is set to false or use value for non valid id.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	uint64 DriverID;
 
 	//radius_wheel would be here, but is deprecated and has been moved to WheelData
 
 	//Number of independent wheels.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	uint32 NumberOfWheels;
 
 	//The vector pointing from the bounding box center point (MovingObject::base. BaseMoving::position) to the middle (in x, y and z) of the rear axle under neutral load conditions. In object coordinates.
@@ -51,7 +51,7 @@ protected:
 	//TODO: bbcentertofront
 
 	//Static minimal distance or space from the lowest point of the vehicle's body to the surface plane below it under neutral load conditions. This distance disregards, for example, driving-dynamic effects or road-surface effects. Can be useful to approximate the clearance area under a vehicle that a sensor can see through. Note: ground_clearance is included in the bounding box height.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	double GroundClearance;
 
 	//Description of each wheel.

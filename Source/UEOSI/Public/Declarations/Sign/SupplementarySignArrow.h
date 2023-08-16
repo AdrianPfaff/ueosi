@@ -35,11 +35,11 @@ protected:
 	osi3::TrafficSign_SupplementarySign_Classification_Arrow* InternalArrow;
 
 	//The IDs of the lanes the arrow applies to.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	TArray<uint64> LaneIDs;
 
 	//The direction to which the arrow points to.
-	UPROPERTY(EditAnywhere, Category="DECL")
+	UPROPERTY(EditAnywhere)
 	TArray<EArrowDirection> Directions;
 	
 };
