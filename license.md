@@ -1,4 +1,6 @@
-# unreal-osi
+# ueosi
+
+This software uses OSI and protobuf. See the Resources folder for their licenses.
 
 MIT License
 
